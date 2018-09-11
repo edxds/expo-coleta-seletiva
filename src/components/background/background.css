@@ -1,0 +1,23 @@
+.background-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+
+    top: 0px;
+    left: 0px;
+
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+}
+
+.background {
+    height: calc(100vh + 64px);
+    width: auto;
+
+    filter: blur(16px);
+    z-index: -999;
+}
