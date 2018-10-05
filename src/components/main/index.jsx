@@ -6,18 +6,15 @@ import Background from '../background';
 
 export default class Main extends React.Component {
   state = {
-    logoUrl:
-      'http://www.cefet-rj.br/attachments/article/431/Vertical%20branco.png',
-    backgroundUrl:
-      'http://www.cefet-rj.br/images/imagens_artigos/2015/10/bloco_e.jpg',
+    backgroundUrl: require('../../assets/bg-image.jpg'),
   };
 
   render() {
-    const { logoUrl, backgroundUrl } = this.state;
+    const { backgroundUrl } = this.state;
 
     return (
       <main>
-        <Title logoUrl={logoUrl} />
+        <Title />
         <Background url={backgroundUrl} />
       </main>
     );
