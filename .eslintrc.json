@@ -1,3 +1,20 @@
 {
-  "extends": ["airbnb", "prettier"]
+  "extends": ["airbnb", "prettier"],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "globalReturn": true,
+      "generators": false,
+      "objectLiteralDuplicateProperties": false,
+      "experimentalObjectRestSpread": true,
+      "jsx": true
+    },
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  }
 }
