@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Main from './components/main';
+import smoothscroll from 'smoothscroll-polyfill';
+
+import App from './components/app';
+
+smoothscroll.polyfill();
 
 // eslint-disable-next-line react/jsx-filename-extension
-ReactDOM.render(<Main />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
