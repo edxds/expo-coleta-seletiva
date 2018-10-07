@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900');
+
+html {
+  font-family: 'Roboto';
+}
+
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+
+  padding: 0;
+  margin: 0;
+
+  background-color: white;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+}
+
+.shared-el {
+  transition: 0.5s;
+
+  position: fixed;
+
+  height: 44px;
+
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+
+  z-index: 9;
+
+  &.morph {
+    height: 88px;
+
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}

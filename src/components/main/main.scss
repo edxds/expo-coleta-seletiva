@@ -1,0 +1,38 @@
+main {
+  position: fixed;
+
+  display: flex;
+  flex-direction: column;
+
+  height: 100vh;
+  width: 100vw;
+
+  background-image: url('../../assets/bg-image.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.hamburger-menu {
+  position: absolute;
+
+  height: auto;
+  width: 22px;
+
+  padding: 0;
+  margin: 32px 0px 0px 32px;
+
+  background-color: transparent;
+  border-style: none;
+
+  img {
+    transition: transform cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.2s;
+
+    height: auto;
+    width: 22px;
+
+    &:hover {
+      transform: scale(1.2, 1.2);
+    }
+  }
+}

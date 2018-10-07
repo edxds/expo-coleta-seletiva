@@ -1,13 +1,10 @@
 import React from 'react';
 
+import LogoSvg from '../../assets/logo/unified-logo.svg';
 import './logo.css';
 
 const Logo = () => (
-  <img
-    className="logo"
-    src={require('../../assets/logo/unified-logo.svg')}
-    alt="Logotipo do projeto"
-  />
+  <img className="logo" src={LogoSvg} alt="Logotipo do projeto" />
 );
 
 export default Logo;

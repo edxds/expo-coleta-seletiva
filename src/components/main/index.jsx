@@ -1,22 +1,17 @@
 import React from 'react';
-import './main.css';
 
 import Title from '../title';
-import Background from '../background';
 
-export default class Main extends React.Component {
-  state = {
-    backgroundUrl: require('../../assets/bg-image.jpg'),
-  };
+import HamburgerIcon from '../../assets/icons/hamburger-icon.svg';
+import './main.scss';
 
-  render() {
-    const { backgroundUrl } = this.state;
+const Main = props => (
+  <main {...props}>
+    <button type="button" className="hamburger-menu">
+      <img src={HamburgerIcon} alt="Menu" />
+    </button>
+    <Title />
+  </main>
+);
 
-    return (
-      <main>
-        <Title />
-        <Background url={backgroundUrl} />
-      </main>
-    );
-  }
-}
+export default Main;

@@ -1,0 +1,40 @@
+.process-cta {
+  transition: 0.5s;
+
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+
+  -webkit-appearance: none;
+
+  padding: 0px 16px;
+  border-radius: 8px;
+
+  border: none;
+  background-color: #107df0;
+
+  text-transform: uppercase !important;
+  font-variant: small-caps !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.05em !important;
+
+  font: inherit;
+
+  color: white;
+
+  z-index: 1;
+
+  p {
+    margin: 0;
+  }
+
+  img {
+    // iOS Safari doesn't support justify-content in buttons?
+    margin-left: auto;
+  }
+}
