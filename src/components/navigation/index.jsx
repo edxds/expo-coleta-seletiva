@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import HamburgerMenu from '../hamburger-menu';
 import NavDrawer from '../navigation-drawer';
