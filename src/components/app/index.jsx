@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Navigation from '../navigation';
 import Main from '../main';
 import Process from '../process';
 import ProgressBar from '../process/progress-bar';
@@ -11,6 +12,7 @@ import './app.scss';
 export default class App extends React.Component {
   state = {
     morph: false,
+    isDrawerVisible: false,
     progress: { a: 0, b: 0, c: 0 },
   };
 
@@ -48,15 +50,20 @@ export default class App extends React.Component {
     }
   };
 
+  handleDrawerVisible = visibility => {
+    this.setState({ isDrawerVisible: visibility });
+  };
+
   handleProcessPercentages = progress => {
     this.setState({ progress });
   };
 
   render() {
-    const { morph, progress } = this.state;
+    const { morph, progress, isDrawerVisible } = this.state;
 
     return (
-      <div className="app">
+      <div className="app" style={{ overflow: isDrawerVisible && 'hidden' }}>
+        <Navigation />
         <SharedElement
           renderFrom={style => (
             <ProcessButton style={style} onClick={this.handleMainButtonClick} />
