@@ -38,7 +38,7 @@ export default class App extends React.Component {
   };
 
   handleMainButtonClick = ev => {
-    const to = document.querySelector('#section-a').offsetTop;
+    const to = document.querySelector('.progress-container').offsetTop;
 
     const { target } = ev;
     const computedStyle = window.getComputedStyle(target);
