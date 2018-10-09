@@ -5,6 +5,45 @@ import { ReactComponent as TrashIcon } from '../../../assets/icons/trash-icon.sv
 import { ReactComponent as ChecklistIcon } from '../../../assets/icons/checklist-filled-icon.svg';
 import { ReactComponent as TruckIcon } from '../../../assets/icons/truck-icon.svg';
 
+const ProgressBarItem = ({
+  onClick,
+  isActive,
+  progress,
+  sectionId,
+  children,
+}) => {
+  const handleClick = () => {
+    onClick(sectionId);
+  };
+
+  return (
+    <div
+      className="progress-header-item"
+      aria-hidden="true"
+      onClick={handleClick}
+    >
+      <div className={`progress-header-icon ${isActive ? 'active' : ''}`}>
+        {children}
+      </div>
+
+      <div className="progress-header-progress">
+        <div
+          className="progress-header-progress active"
+          style={{ width: `${progress * 100}%` }}
+        />
+      </div>
+    </div>
+  );
+};
+
+ProgressBarItem.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  isActive: PropTypes.bool.isRequired,
+  progress: PropTypes.number.isRequired,
+  sectionId: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
+
 const ProgressBar = ({ elevate, progress, handleClick, ...props }) => {
   const elevateClassName = elevate ? 'elevated' : '';
 
@@ -14,44 +53,32 @@ const ProgressBar = ({ elevate, progress, handleClick, ...props }) => {
 
   return (
     <div className={`progress-header ${elevateClassName}`} {...props}>
-      <div className="progress-header-item" onClick={() => handleClick(0)}>
-        <div className={`progress-header-icon ${aActive ? 'active' : ''}`}>
-          <TrashIcon />
-        </div>
+      <ProgressBarItem
+        onClick={handleClick}
+        progress={progress.a}
+        isActive={aActive}
+        sectionId="#section-a"
+      >
+        <TrashIcon />
+      </ProgressBarItem>
 
-        <div className="progress-header-progress">
-          <div
-            className="progress-header-progress active"
-            style={{ width: `${progress.a * 100}%` }}
-          />
-        </div>
-      </div>
+      <ProgressBarItem
+        onClick={handleClick}
+        progress={progress.b}
+        isActive={bActive}
+        sectionId="#section-b"
+      >
+        <ChecklistIcon style={{ marginBottom: 3 }} />
+      </ProgressBarItem>
 
-      <div className="progress-header-item" onClick={() => handleClick(1)}>
-        <div className={`progress-header-icon ${bActive ? 'active' : ''}`}>
-          <ChecklistIcon style={{ marginBottom: 3 }} />
-        </div>
-
-        <div className="progress-header-progress">
-          <div
-            className="progress-header-progress active"
-            style={{ width: `${progress.b * 100}%` }}
-          />
-        </div>
-      </div>
-
-      <div className="progress-header-item" onClick={() => handleClick(2)}>
-        <div className={`progress-header-icon ${cActive ? 'active' : ''}`}>
-          <TruckIcon style={{ marginLeft: 2 }} />
-        </div>
-
-        <div className="progress-header-progress">
-          <div
-            className="progress-header-progress active"
-            style={{ width: `${progress.c * 100}%` }}
-          />
-        </div>
-      </div>
+      <ProgressBarItem
+        onClick={handleClick}
+        progress={progress.c}
+        isActive={cActive}
+        sectionId="#section-c"
+      >
+        <TruckIcon style={{ marginLeft: 2 }} />
+      </ProgressBarItem>
     </div>
   );
 };

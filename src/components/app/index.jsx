@@ -40,7 +40,7 @@ export default class App extends React.Component {
   scrollToElement = (selector, offset) => {
     const to = document.querySelector(selector).offsetTop;
     window.scrollTo({ top: to + offset, behavior: 'smooth' });
-  }
+  };
 
   handleMainButtonClick = ev => {
     const to = document.querySelector('.progress-container').offsetTop;
@@ -63,21 +63,9 @@ export default class App extends React.Component {
     this.setState({ progress });
   };
 
-  handleSectionClick = index => {
-    switch (index) {
-      case 0:
-        this.scrollToElement('#section-a', -43);
-        break;
-      case 1:
-        this.scrollToElement('#section-b', -43);
-        break;
-      case 2:
-        this.scrollToElement('#section-c', -43);
-        break;
-      default:
-        break;
-    }
-  }
+  handleSectionClick = id => {
+    this.scrollToElement(id, -43);
+  };
 
   render() {
     const { morph, progress, isDrawerVisible } = this.state;
@@ -89,7 +77,13 @@ export default class App extends React.Component {
           renderFrom={style => (
             <ProcessButton style={style} onClick={this.handleMainButtonClick} />
           )}
-          renderTo={style => <ProgressBar style={style} progress={progress} handleClick={this.handleSectionClick} />}
+          renderTo={style => (
+            <ProgressBar
+              style={style}
+              progress={progress}
+              handleClick={this.handleSectionClick}
+            />
+          )}
           fromStyle={{ borderRadius: 8 }}
           toStyle={{ borderRadius: 0 }}
           morph={morph}
