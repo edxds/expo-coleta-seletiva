@@ -43,8 +43,6 @@ export default class App extends React.Component {
   };
 
   handleMainButtonClick = ev => {
-    const to = document.querySelector('.progress-container').offsetTop;
-
     const { target } = ev;
     const computedStyle = window.getComputedStyle(target);
     const opacity = parseInt(computedStyle.opacity, 10);
