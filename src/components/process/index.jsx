@@ -98,25 +98,27 @@ class Process extends React.Component {
   render() {
     const { elevateHeader, handlePercentages, ...passthrough } = this.props;
 
-    return [
-      <div className="progress-main-cover" />,
-      <article className="progress-container" {...passthrough}>
-        <section id="section-a">
-          <h2>Geração</h2>
-          <p>{lorem}</p>
-        </section>
+    return (
+      <React.Fragment>
+        <div className="progress-main-cover" />
+        <article className="progress-container" {...passthrough}>
+          <section id="section-a">
+            <h2>Geração</h2>
+            <p>{lorem}</p>
+          </section>
 
-        <section id="section-b">
-          <h2>Separação</h2>
-          <p>{lorem}</p>
-        </section>
+          <section id="section-b">
+            <h2>Separação</h2>
+            <p>{lorem}</p>
+          </section>
 
-        <section id="section-c">
-          <h2>Coleta</h2>
-          <p>{lorem}</p>
-        </section>
-      </article>,
-    ];
+          <section id="section-c">
+            <h2>Coleta</h2>
+            <p>{lorem}</p>
+          </section>
+        </article>
+      </React.Fragment>
+    );
   }
 }
 
