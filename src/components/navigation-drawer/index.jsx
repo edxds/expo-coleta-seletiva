@@ -18,16 +18,22 @@ class NavDrawer extends React.Component {
       <nav className={this.getVisibility('nav-drawer', visible)}>
         <ul className="nav-items">
           <li className="nav-item selected">
-            <HomeIcon />
-            <span className="nav-item-title">Início</span>
+            <a href="/inicio">
+              <HomeIcon />
+              <span className="nav-item-title">Início</span>
+            </a>
           </li>
           <li className="nav-item">
-            <RecyclingIcon style={{ marginTop: 4 }} />
-            <span className="nav-item-title">O Processo</span>
+            <a href="/processo">
+              <RecyclingIcon style={{ marginTop: 4 }} />
+              <span className="nav-item-title">O Processo</span>
+            </a>
           </li>
           <li className="nav-item">
-            <GalleryIcon />
-            <span className="nav-item-title">Galeria</span>
+            <a href="/galeria">
+              <GalleryIcon />
+              <span className="nav-item-title">Galeria</span>
+            </a>
           </li>
         </ul>
       </nav>,
