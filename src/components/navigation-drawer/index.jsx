@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import { ReactComponent as HomeIcon } from '../../assets/icons/home-icon.svg';
 import { ReactComponent as RecyclingIcon } from '../../assets/icons/recycling-icon.svg';
@@ -7,42 +8,86 @@ import { ReactComponent as GalleryIcon } from '../../assets/icons/gallery-icon.s
 
 import './nav-drawer.scss';
 
+const NavDrawerItem = ({ id, href, selected, onClick, children }) => {
+  const handleClick = () => {
+    onClick(id);
+  };
+
+  return (
+    <li className={`nav-item ${selected ? 'selected' : ''}`} id={id}>
+      <Link to={href} onClick={handleClick}>
+        {children}
+      </Link>
+    </li>
+  );
+};
+
+NavDrawerItem.propTypes = {
+  id: PropTypes.string.isRequired,
+  href: PropTypes.string.isRequired,
+  selected: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
+  children: PropTypes.arrayOf(PropTypes.node).isRequired,
+};
+
 class NavDrawer extends React.Component {
+  state = {
+    selectedId: 'home',
+  };
+
   getVisibility = (className, condition) =>
     `${className} ${condition ? 'visible' : ''}`;
 
+  handleClick = id => {
+    this.setState({ selectedId: id });
+
+    setTimeout(() => {
+      const { onDismiss } = this.props;
+      onDismiss();
+    }, 200);
+  };
+
   render() {
+    const { selectedId } = this.state;
     const { visible, onDismiss } = this.props;
 
     return (
       <React.Fragment>
         <nav className={this.getVisibility('nav-drawer', visible)}>
           <ul className="nav-items">
-            <li className="nav-item selected">
-              <a href="/inicio">
-                <HomeIcon />
-                <span className="nav-item-title">Início</span>
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="/processo">
-                <RecyclingIcon style={{ marginTop: 4 }} />
-                <span className="nav-item-title">O Processo</span>
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="/galeria">
-                <GalleryIcon />
-                <span className="nav-item-title">Galeria</span>
-              </a>
-            </li>
+            <NavDrawerItem
+              href="/"
+              id="home"
+              selected={selectedId === 'home'}
+              onClick={this.handleClick}
+            >
+              <HomeIcon />
+              <span className="nav-item-title">Início</span>
+            </NavDrawerItem>
+            <NavDrawerItem
+              href="/processo"
+              id="process"
+              selected={selectedId === 'process'}
+              onClick={this.handleClick}
+            >
+              <RecyclingIcon style={{ marginTop: 4 }} />
+              <span className="nav-item-title">O Processo</span>
+            </NavDrawerItem>
+            <NavDrawerItem
+              href="/galeria"
+              id="gallery"
+              selected={selectedId === 'gallery'}
+              onClick={this.handleClick}
+            >
+              <GalleryIcon />
+              <span className="nav-item-title">Galeria</span>
+            </NavDrawerItem>
           </ul>
         </nav>
         <div
           className={this.getVisibility('nav-backdrop', visible)}
           onClick={visible ? onDismiss : undefined}
-          style={{ pointerEvents: !visible && 'none' }}
-          onTransitionEnd={this.hideBackdrop}
+          style={{ pointerEvents: !visible ? 'none' : 'auto' }}
           aria-hidden
         />
       </React.Fragment>

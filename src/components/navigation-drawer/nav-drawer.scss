@@ -16,6 +16,8 @@ body.lock {
 
   background-color: white;
 
+  pointer-events: all;
+
   &.visible {
     transform: none;
   }
@@ -29,6 +31,8 @@ body.lock {
 }
 
 .nav-item {
+  transition: 0.2s;
+
   display: flex;
   align-items: center;
 
@@ -44,6 +48,10 @@ body.lock {
 
     a {
       text-decoration: none;
+
+      svg {
+        fill: #107df0;
+      }
     }
   }
 
@@ -60,6 +68,11 @@ body.lock {
     border-radius: 8px;
 
     color: inherit;
+    text-decoration: none;
+
+    svg {
+      fill: rgba($color: #000000, $alpha: 0.5);
+    }
   }
 }
 
