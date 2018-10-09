@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 
 import smoothscroll from 'smoothscroll-polyfill';
 
-import App from './components/app';
+import RoutedApp from './components/routed';
 
 smoothscroll.polyfill();
 
-// eslint-disable-next-line react/jsx-filename-extension
-ReactDOM.render(<App />, document.getElementById('root'));
+/* eslint-disable */
+ReactDOM.render(<RoutedApp />, document.getElementById('root'));

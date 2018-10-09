@@ -80,12 +80,36 @@ class Process extends React.Component {
       this.getExponentialPercentage(progressC)
     );
 
-    const { handlePercentages } = this.props;
-    handlePercentages({
-      a: aExpo,
-      b: bExpo,
-      c: cExpo,
-    });
+    // const { handlePercentages } = this.props;
+    // handlePercentages({
+    //   a: aExpo,
+    //   b: bExpo,
+    //   c: cExpo,
+    // });
+
+    const progresses = [
+      document.querySelector('#progress-item-progress-a'),
+      document.querySelector('#progress-item-progress-b'),
+      document.querySelector('#progress-item-progress-c'),
+    ];
+
+    const icons = [
+      document.querySelector('#progress-item-icon-a'),
+      document.querySelector('#progress-item-icon-b'),
+      document.querySelector('#progress-item-icon-c'),
+    ];
+
+    const aActive = aExpo > 0 && !bExpo;
+    const bActive = bExpo > 0 && !cExpo;
+    const cActive = cExpo > 0 && !bActive;
+
+    progresses[0].style = `width: ${aExpo * 100}%`;
+    progresses[1].style = `width: ${bExpo * 100}%`;
+    progresses[2].style = `width: ${cExpo * 100}%`;
+
+    icons[0].classList.toggle('active', aActive);
+    icons[1].classList.toggle('active', bActive);
+    icons[2].classList.toggle('active', cActive);
   };
 
   getExponentialPercentage = x => {

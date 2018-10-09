@@ -1,6 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import Navigation from '../navigation';
 import Main from '../main';
 import Process from '../process';
 import ProgressBar from '../process/progress-bar';
@@ -10,6 +10,14 @@ import SharedElement from '../shared-element';
 import './app.scss';
 
 export default class App extends React.Component {
+  static propTypes = {
+    startOnProcess: PropTypes.bool,
+  };
+
+  static defaultProps = {
+    startOnProcess: false,
+  };
+
   state = {
     morph: false,
     isDrawerVisible: false,
@@ -18,11 +26,34 @@ export default class App extends React.Component {
 
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
+
+    const { startOnProcess } = this.props;
+    if (startOnProcess) {
+      this.scrollToElement('.progress-container', 0);
+    }
+  }
+
+  componentDidUpdate() {
+    const { startOnProcess } = this.props;
+    const scrollPercentage = this.getScrollPercentage();
+
+    if (startOnProcess && scrollPercentage < 0.9) {
+      this.scrollToElement('.progress-container', 0);
+    } else if (startOnProcess === false && scrollPercentage >= 1) {
+      this.scrollToElement('.app', 0);
+    }
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
   }
+
+  getScrollPercentage = () => {
+    const windowHeight = document.documentElement.clientHeight;
+    const { scrollY } = window;
+
+    return scrollY / windowHeight;
+  };
 
   handleScroll = () => {
     const windowHeight = document.documentElement.clientHeight;
@@ -34,6 +65,15 @@ export default class App extends React.Component {
     const { morph } = this.state;
     if (morph !== shouldMorph) {
       this.setState({ morph: shouldMorph });
+    }
+
+    const { history } = this.props;
+    const { pathname } = history.location;
+
+    if (scrollPercent >= 1 && pathname === '/') {
+      history.push('/processo');
+    } else if (scrollPercent <= 0.9 && pathname === '/processo') {
+      history.push('/');
     }
   };
 
@@ -70,7 +110,6 @@ export default class App extends React.Component {
 
     return (
       <div className="app" style={{ overflow: isDrawerVisible && 'hidden' }}>
-        <Navigation />
         <SharedElement
           renderFrom={style => (
             <ProcessButton style={style} onClick={this.handleMainButtonClick} />
@@ -88,7 +127,7 @@ export default class App extends React.Component {
         />
 
         <Main />
-        <Process handlePercentages={this.handleProcessPercentages} />
+        <Process />
       </div>
     );
   }
