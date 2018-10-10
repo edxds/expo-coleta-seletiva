@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import App from '../app';
 import Navigation from '../navigation';
+import UnderConstruction from '../under-construction';
 
 const RoutedApp = () => (
   <BrowserRouter>
@@ -15,6 +16,7 @@ const RoutedApp = () => (
           path="/processo"
           render={props => <App {...props} startOnProcess />}
         />
+        <Route component={UnderConstruction} />
       </Switch>
     </React.Fragment>
   </BrowserRouter>
