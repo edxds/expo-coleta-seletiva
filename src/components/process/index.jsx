@@ -103,9 +103,10 @@ class Process extends React.Component {
     const bActive = bExpo > 0 && !cExpo;
     const cActive = cExpo > 0 && !bActive;
 
-    progresses[0].style = `width: ${aExpo * 100}%`;
-    progresses[1].style = `width: ${bExpo * 100}%`;
-    progresses[2].style = `width: ${cExpo * 100}%`;
+    // iOS doesn't like me setting style directly 🤔
+    progresses[0].style.width = `${aExpo * 100}%`;
+    progresses[1].style.width = `${bExpo * 100}%`;
+    progresses[2].style.width = `${cExpo * 100}%`;
 
     icons[0].classList.toggle('active', aActive);
     icons[1].classList.toggle('active', bActive);
