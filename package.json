@@ -2,6 +2,10 @@
   "name": "pb-site-react",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "8.9.4",
+    "npm": "6.4.1"
+  },
   "dependencies": {
     "node-sass": "^4.9.3",
     "prop-types": "^15.6.2",
