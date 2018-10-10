@@ -53,7 +53,11 @@ export default class Navigation extends React.Component {
     const { scrollY } = window;
 
     const scrollPercent = scrollY / windowHeight;
-    this.setState({ scrolledBeyondThreshold: scrollPercent > 0.5 });
+    const hasScrolledBeyondThreshold = scrollPercent > 0.5;
+    const { scrolledBeyondThreshold } = this.state;
+    if (scrolledBeyondThreshold !== hasScrolledBeyondThreshold) {
+      this.setState({ scrolledBeyondThreshold: hasScrolledBeyondThreshold });
+    }
   };
 
   render() {
