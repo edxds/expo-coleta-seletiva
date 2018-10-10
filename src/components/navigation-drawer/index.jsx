@@ -35,8 +35,31 @@ class NavDrawer extends React.Component {
     selectedId: 'home',
   };
 
+  componentDidUpdate(prevProps) {
+    const { pathname } = window.location;
+    const id = this.getIdForLocation(pathname);
+
+    const { selectedId } = this.state;
+    if (id !== selectedId && !prevProps.visible) {
+      this.setState({ selectedId: id }); // eslint-disable-line
+    }
+  }
+
   getVisibility = (className, condition) =>
     `${className} ${condition ? 'visible' : ''}`;
+
+  getIdForLocation = location => {
+    switch (location) {
+      case '/':
+        return 'home';
+      case '/processo':
+        return 'process';
+      case '/galeria':
+        return 'gallery';
+      default:
+        return '';
+    }
+  };
 
   handleClick = id => {
     this.setState({ selectedId: id });
