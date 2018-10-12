@@ -18,25 +18,3 @@ body {
   display: flex;
   flex-direction: column;
 }
-
-.shared-el {
-  transition: 0.5s;
-
-  position: fixed;
-
-  height: 44px;
-
-  bottom: 16px;
-  left: 16px;
-  right: 16px;
-
-  z-index: 9;
-
-  &.morph {
-    height: 88px;
-
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-}
