@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { scrollToElement, getScrollPercentage } from '../lib/scroll';
 
-import Main from '../components/main';
+import Landing from '../components/landing';
 import Process from '../components/process';
 
 class Home extends React.Component {
@@ -80,7 +80,7 @@ class Home extends React.Component {
 
     return (
       <div id="home">
-        <Main />
+        <Landing />
         <Process
           showProgressBar={startOnProcess}
           mergeHeader={engagedInProcess}
