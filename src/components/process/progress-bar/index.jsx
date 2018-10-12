@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { ReactComponent as TrashIcon } from '../../../assets/icons/trash-icon.svg';
 import { ReactComponent as ChecklistIcon } from '../../../assets/icons/checklist-filled-icon.svg';
 import { ReactComponent as TruckIcon } from '../../../assets/icons/truck-icon.svg';
+import './progress-bar.scss';
 
 const ProgressBarItem = ({ onClick, sectionId, children, id }) => {
   const handleClick = () => {
