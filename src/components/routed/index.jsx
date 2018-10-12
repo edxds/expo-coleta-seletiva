@@ -6,6 +6,8 @@ import Home from '../../pages/Home';
 import Navigation from '../navigation';
 import UnderConstruction from '../under-construction';
 
+import './app.scss';
+
 const RoutedApp = () => (
   <BrowserRouter>
     <React.Fragment>
