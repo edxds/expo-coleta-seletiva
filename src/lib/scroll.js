@@ -9,7 +9,8 @@ export function scrollToElement(options) {
 }
 
 export function getScrollPercentage() {
-  const windowHeight = document.documentElement.clientHeight;
+  const processTabHeight = 64;
+  const windowHeight = document.documentElement.clientHeight - processTabHeight;
   const { scrollY } = window;
 
   return scrollY / windowHeight;
