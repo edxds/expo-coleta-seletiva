@@ -1,4 +1,8 @@
-.progress-container {
+.process {
+  z-index: 1;
+}
+
+.process-container {
   z-index: 1;
 
   background-color: white;
@@ -8,7 +12,7 @@
   // 24 para espaçar ao começo do hamburger
   // 43 para espaçar ao começo do hamburger
   // 62 para espaçar ao final do hamburger
-  padding-top: 43px;
+  // padding-top: 43px;
   padding-bottom: 88px;
 
   section {
@@ -16,86 +20,85 @@
   }
 }
 
-.progress-main-cover {
-  height: 100vh;
+.process-scroll-cover {
+  height: calc(100vh - 64px);
   width: 100vw;
 
   background-color: transparent;
 }
 
-.progress-header {
+.process-header {
   transition: 0.5s;
 
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-
-  background-color: white;
-
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+
+  justify-content: space-around;
   align-items: center;
 
-  padding: 16px 10%;
+  height: 64px;
+  width: 100%;
 
-  box-shadow: 0px -4px 16px rgba(0, 0, 0, 0.25);
+  padding: 12px;
+  box-sizing: border-box;
 
-  &-item {
-    display: flex;
-    flex-direction: column;
+  -webkit-appearance: none;
+  border: none;
+  border-radius: 8px 8px 0 0;
 
-    align-items: center;
+  background-color: #107df0;
+  color: white;
+  stroke: white;
+  fill: none;
+
+  stroke-width: 4px;
+  stroke-linecap: round;
+
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  * {
+    margin: 0;
   }
 
-  &-icon {
-    transition: 0.25s;
-    transform: scale(0.8);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    height: 44px;
-    width: 44px;
-
-    border-radius: 50%;
-
-    background-color: transparent;
-
-    background-color: #cfe5fc;
-
-    &.active {
-      transform: scale(1);
-      background-color: #107df0;
-
-      svg {
-        fill: #fff;
-      }
-    }
-
-    svg {
-      fill: #107df0;
-    }
+  svg {
+    width: 20px;
+    height: 6px;
   }
 
-  &-progress {
-    width: 66px;
-    height: 4px;
+  &.merge {
+    background-color: white;
+    color: rgba($color: #000000, $alpha: 0.8);
+    stroke: rgba($color: #000000, $alpha: 0.4);
 
-    margin: 8px 0px;
-    margin-bottom: 0px;
-
-    border-radius: 2px;
-
-    background-color: #cfe5fc;
-
-    &.active {
-      width: 50%;
-      margin: 0;
-
-      background-color: #107df0;
+    svg path {
+      d: path('M 0 8 L 20 8');
     }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.progress-bar-container {
+  transition: 0.5s;
+
+  z-index: 2;
+
+  position: fixed;
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 88px;
+
+  transform: translateY(100px);
+
+  &.show {
+    transform: none;
   }
 }

@@ -1,5 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
+import ProgressBar from './progress-bar';
+
+import { ReactComponent as ChevronUp } from '../../assets/icons/chevron-up.svg';
 import './process.scss';
 
 const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a
@@ -42,6 +46,17 @@ const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a
   fermentum.`;
 
 class Process extends React.Component {
+  static propTypes = {
+    showProgressBar: PropTypes.bool,
+    mergeHeader: PropTypes.bool,
+    handleGoToProcess: PropTypes.func.isRequired,
+  };
+
+  static defaultProps = {
+    showProgressBar: false,
+    mergeHeader: false,
+  };
+
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
     this.sections = this.getSections();
@@ -56,6 +71,13 @@ class Process extends React.Component {
     sectionB: document.querySelector('#section-b'),
     sectionC: document.querySelector('#section-c'),
   });
+
+  getExponentialPercentage = x => {
+    const a = 5;
+    return (a ** x - 1) / (a - 1);
+  };
+
+  getClampedPercentage = value => Math.min(Math.max(value, 0), 1);
 
   handleScroll = () => {
     const currentScroll = window.scrollY + (window.innerHeight - 88);
@@ -79,13 +101,6 @@ class Process extends React.Component {
     const cExpo = this.getClampedPercentage(
       this.getExponentialPercentage(progressC)
     );
-
-    // const { handlePercentages } = this.props;
-    // handlePercentages({
-    //   a: aExpo,
-    //   b: bExpo,
-    //   c: cExpo,
-    // });
 
     const progresses = [
       document.querySelector('#progress-item-progress-a'),
@@ -113,20 +128,39 @@ class Process extends React.Component {
     icons[2].classList.toggle('active', cActive);
   };
 
-  getExponentialPercentage = x => {
-    const a = 5;
-    return (a ** x - 1) / (a - 1);
+  handleBarItemClick = id => {
+    const to = document.querySelector(id).offsetTop;
+    const drawerMenuOffset = 43;
+
+    window.scrollTo({ top: to - drawerMenuOffset, behavior: 'smooth' });
   };
 
-  getClampedPercentage = value => Math.min(Math.max(value, 0), 1);
-
   render() {
-    const { elevateHeader, handlePercentages, ...passthrough } = this.props;
+    const {
+      showProgressBar,
+      mergeHeader,
+      handleGoToProcess,
+      ...passthrough
+    } = this.props;
 
     return (
-      <React.Fragment>
-        <div className="progress-main-cover" />
-        <article className="progress-container" {...passthrough}>
+      <div className="process">
+        <div
+          className={`progress-bar-container ${showProgressBar ? 'show' : ''}`}
+        >
+          <ProgressBar handleClick={this.handleBarItemClick} />
+        </div>
+        <div className="process-scroll-cover" />
+        <article className="process-container" {...passthrough}>
+          <button
+            className={`process-header ${mergeHeader ? 'merge' : ''}`}
+            onClick={!mergeHeader ? handleGoToProcess : null}
+            type="button"
+          >
+            <ChevronUp />
+            <p>Como Funciona</p>
+          </button>
+
           <section id="section-a">
             <h2>Geração</h2>
             <p>{lorem}</p>
@@ -142,7 +176,7 @@ class Process extends React.Component {
             <p>{lorem}</p>
           </section>
         </article>
-      </React.Fragment>
+      </div>
     );
   }
 }

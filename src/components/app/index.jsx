@@ -3,9 +3,6 @@ import PropTypes from 'prop-types';
 
 import Main from '../main';
 import Process from '../process';
-import ProgressBar from '../process/progress-bar';
-import ProcessButton from '../main/process-button';
-import SharedElement from '../shared-element';
 
 import './app.scss';
 
@@ -19,8 +16,7 @@ export default class App extends React.Component {
   };
 
   state = {
-    morph: false,
-    isDrawerVisible: false,
+    engagedInProcess: false,
   };
 
   componentDidMount() {
@@ -28,7 +24,7 @@ export default class App extends React.Component {
 
     const { startOnProcess } = this.props;
     if (startOnProcess) {
-      this.scrollToElement('.progress-container', 0);
+      this.scrollToElement('.process-container', 0);
     }
   }
 
@@ -37,7 +33,7 @@ export default class App extends React.Component {
     const scrollPercentage = this.getScrollPercentage();
 
     if (startOnProcess && scrollPercentage < 0.9) {
-      this.scrollToElement('.progress-container', 0);
+      this.scrollToElement('.process-container', 0);
     } else if (startOnProcess === false && scrollPercentage >= 1) {
       this.scrollToElement('.app', 0);
     }
@@ -55,24 +51,32 @@ export default class App extends React.Component {
   };
 
   handleScroll = () => {
-    const windowHeight = document.documentElement.clientHeight;
+    const scrollHeight = document.documentElement.clientHeight - 64;
     const { scrollY } = window;
 
-    const scrollPercent = scrollY / windowHeight;
-    const shouldMorph = scrollPercent >= 0.2;
+    const scrollPercent = scrollY / scrollHeight;
 
-    const { morph } = this.state;
-    if (morph !== shouldMorph) {
-      this.setState({ morph: shouldMorph });
-    }
+    this.handleHistoryByScroll(scrollPercent);
+    this.handleProcessEngagementByScroll(scrollPercent);
+  };
 
+  handleHistoryByScroll = scrollPercentage => {
     const { history } = this.props;
     const { pathname } = history.location;
 
-    if (scrollPercent >= 1 && pathname === '/') {
+    if (scrollPercentage >= 1 && pathname === '/') {
       history.push('/processo');
-    } else if (scrollPercent <= 0.9 && pathname === '/processo') {
+    } else if (scrollPercentage <= 0.9 && pathname === '/processo') {
       history.push('/');
+    }
+  };
+
+  handleProcessEngagementByScroll = scrollPercentage => {
+    const { engagedInProcess } = this.state;
+    if (scrollPercentage > 0.5 && !engagedInProcess) {
+      this.setState({ engagedInProcess: true });
+    } else if (scrollPercentage < 0.5 && engagedInProcess) {
+      this.setState({ engagedInProcess: false });
     }
   };
 
@@ -81,44 +85,23 @@ export default class App extends React.Component {
     window.scrollTo({ top: to + offset, behavior: 'smooth' });
   };
 
-  handleMainButtonClick = ev => {
-    const { target } = ev;
-    const computedStyle = window.getComputedStyle(target);
-    const opacity = parseInt(computedStyle.opacity, 10);
-    const isVisible = opacity >= 0.8;
-
-    if (isVisible) {
-      this.scrollToElement('.progress-container', 0);
-    }
-  };
-
-  handleDrawerVisible = visibility => {
-    this.setState({ isDrawerVisible: visibility });
-  };
-
-  handleSectionClick = id => {
-    this.scrollToElement(id, -43);
+  handleShowProcess = () => {
+    const { history } = this.props;
+    history.push('/processo');
   };
 
   render() {
-    const { morph, isDrawerVisible } = this.state;
+    const { startOnProcess } = this.props;
+    const { engagedInProcess } = this.state;
 
     return (
-      <div className="app" style={{ overflow: isDrawerVisible && 'hidden' }}>
-        <SharedElement
-          renderFrom={style => (
-            <ProcessButton style={style} onClick={this.handleMainButtonClick} />
-          )}
-          renderTo={style => (
-            <ProgressBar style={style} handleClick={this.handleSectionClick} />
-          )}
-          fromStyle={{ borderRadius: 8 }}
-          toStyle={{ borderRadius: 0 }}
-          morph={morph}
-        />
-
+      <div className="app">
         <Main />
-        <Process />
+        <Process
+          showProgressBar={startOnProcess}
+          mergeHeader={engagedInProcess}
+          handleGoToProcess={this.handleShowProcess}
+        />
       </div>
     );
   }
