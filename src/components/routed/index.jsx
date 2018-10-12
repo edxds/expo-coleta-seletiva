@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import App from '../app';
+import Home from '../../pages/Home';
+
 import Navigation from '../navigation';
 import UnderConstruction from '../under-construction';
 
@@ -10,11 +11,11 @@ const RoutedApp = () => (
     <React.Fragment>
       <Navigation />
       <Switch>
-        <Route exact path="/" component={App} />
+        <Route exact path="/" component={Home} />
         <Route
           exact
           path="/processo"
-          render={props => <App {...props} startOnProcess />}
+          render={props => <Home {...props} startOnProcess />}
         />
         <Route component={UnderConstruction} />
       </Switch>
