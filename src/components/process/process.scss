@@ -67,6 +67,12 @@
   svg {
     width: 20px;
     height: 6px;
+
+    overflow: unset;
+
+    path {
+      transition: d 0.5s;
+    }
   }
 
   &.merge {
@@ -75,7 +81,7 @@
     stroke: rgba($color: #000000, $alpha: 0.4);
 
     svg path {
-      d: path('M 0 8 L 20 8');
+      d: path('M0 4 L16 4 L32 4');
     }
 
     &:focus {
