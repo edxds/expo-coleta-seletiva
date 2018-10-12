@@ -21,7 +21,6 @@ export default class App extends React.Component {
   state = {
     morph: false,
     isDrawerVisible: false,
-    progress: { a: 0, b: 0, c: 0 },
   };
 
   componentDidMount() {
@@ -97,16 +96,12 @@ export default class App extends React.Component {
     this.setState({ isDrawerVisible: visibility });
   };
 
-  handleProcessPercentages = progress => {
-    this.setState({ progress });
-  };
-
   handleSectionClick = id => {
     this.scrollToElement(id, -43);
   };
 
   render() {
-    const { morph, progress, isDrawerVisible } = this.state;
+    const { morph, isDrawerVisible } = this.state;
 
     return (
       <div className="app" style={{ overflow: isDrawerVisible && 'hidden' }}>
@@ -115,11 +110,7 @@ export default class App extends React.Component {
             <ProcessButton style={style} onClick={this.handleMainButtonClick} />
           )}
           renderTo={style => (
-            <ProgressBar
-              style={style}
-              progress={progress}
-              handleClick={this.handleSectionClick}
-            />
+            <ProgressBar style={style} handleClick={this.handleSectionClick} />
           )}
           fromStyle={{ borderRadius: 8 }}
           toStyle={{ borderRadius: 0 }}

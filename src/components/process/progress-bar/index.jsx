@@ -38,7 +38,7 @@ ProgressBarItem.propTypes = {
   id: PropTypes.string.isRequired,
 };
 
-const ProgressBar = ({ elevate, progress, handleClick, ...props }) => {
+const ProgressBar = ({ elevate, handleClick, ...props }) => {
   const elevateClassName = elevate ? 'elevated' : '';
 
   return (
@@ -59,15 +59,7 @@ const ProgressBar = ({ elevate, progress, handleClick, ...props }) => {
 };
 
 ProgressBar.propTypes = {
-  progress: PropTypes.shape({
-    a: PropTypes.number,
-    b: PropTypes.number,
-    c: PropTypes.number,
-  }),
-};
-
-ProgressBar.defaultProps = {
-  progress: { a: 0, b: 0, c: 0 },
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default ProgressBar;
