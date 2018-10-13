@@ -136,6 +136,10 @@ class Process extends React.Component {
   };
 
   render() {
+    const pullTabHeight = 64;
+    const scrollCoverHeight =
+      document.documentElement.clientHeight - pullTabHeight;
+
     const {
       showProgressBar,
       mergeHeader,
@@ -150,7 +154,10 @@ class Process extends React.Component {
         >
           <ProgressBar handleClick={this.handleBarItemClick} />
         </div>
-        <div className="process-scroll-cover" />
+        <div
+          className="process-scroll-cover"
+          style={{ height: scrollCoverHeight }}
+        />
         <article className="process-container" {...passthrough}>
           <button
             className={`process-header ${mergeHeader ? 'merge' : ''}`}
