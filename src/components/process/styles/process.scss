@@ -46,9 +46,6 @@
     }
 
     &.show-bg {
-      // padding para acomodar tabs
-      padding-top: 108px;
-
       background-color: white;
       box-shadow: 0px -4px 16px rgba(0, 0, 0, 0.5);
 
@@ -142,6 +139,10 @@
     padding-bottom: 32px;
 
     border-radius: 8px;
+
+    &.merge {
+      opacity: 0;
+    }
   }
 }
 
