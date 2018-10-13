@@ -9,7 +9,9 @@ export function scrollToElement(options) {
 }
 
 export function getScrollPercentage() {
-  const processTabHeight = 64;
+  const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+
+  const processTabHeight = isDesktop ? 80 : 64;
   const windowHeight = document.documentElement.clientHeight - processTabHeight;
   const { scrollY } = window;
 
