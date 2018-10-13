@@ -41,6 +41,14 @@
       stroke: $primary-color;
     }
   }
+
+  @media (min-width: $min-width-desktop) {
+    position: fixed;
+    top: 32px;
+    bottom: unset;
+
+    display: flex;
+  }
 }
 
 .drawer-button {

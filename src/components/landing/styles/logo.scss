@@ -1,3 +1,5 @@
+@import '../../variables';
+
 .logo-container {
   display: flex;
   flex-direction: column;
@@ -6,6 +8,10 @@
   align-items: center;
 
   margin-top: 42px;
+
+  @media (min-width: $min-width-desktop) {
+    margin-top: 108px;
+  }
 }
 
 .logo {

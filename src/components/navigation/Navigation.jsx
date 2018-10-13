@@ -5,6 +5,7 @@ import { connectToTheme } from '../context';
 
 import DrawerButton from './DrawerButton';
 import NavDrawer from './NavDrawer';
+import NavTabs from './NavTabs';
 
 import './styles/navigation.scss';
 
@@ -75,13 +76,24 @@ class Navigation extends React.Component {
     const { currentTheme } = this.props;
     const { drawerVisible } = this.state;
 
+    const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+
     return (
       <div className={`nav-elements ${currentTheme}`}>
-        <DrawerButton
-          onClick={this.onHamburgerClick}
-          // showBackground={scrolledBeyondThreshold}
-        />
-        <NavDrawer visible={drawerVisible} onDismiss={this.onDrawerDismiss} />
+        {isDesktop ? (
+          <NavTabs />
+        ) : (
+          <React.Fragment>
+            <DrawerButton
+              onClick={this.onHamburgerClick}
+              // showBackground={scrolledBeyondThreshold}
+            />
+            <NavDrawer
+              visible={drawerVisible}
+              onDismiss={this.onDrawerDismiss}
+            />
+          </React.Fragment>
+        )}
       </div>
     );
   }
