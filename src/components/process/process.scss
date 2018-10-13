@@ -2,6 +2,7 @@
 
 .process {
   z-index: 1;
+  width: 100%;
 }
 
 .process-container {
@@ -23,9 +24,6 @@
 }
 
 .process-scroll-cover {
-  height: calc(100vh - 64px);
-  width: 100vw;
-
   background-color: transparent;
 }
 
