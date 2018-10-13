@@ -1,3 +1,5 @@
+@import '../../variables';
+
 .progress-header {
   transition: 0.5s;
 
@@ -39,11 +41,11 @@
 
     background-color: transparent;
 
-    background-color: #cfe5fc;
+    background-color: $primary-color-lighter;
 
     &.active {
       transform: scale(1);
-      background-color: #107df0;
+      background-color: $primary-color;
 
       svg {
         fill: #fff;
@@ -51,7 +53,7 @@
     }
 
     svg {
-      fill: #107df0;
+      fill: $primary-color;
     }
   }
 
@@ -64,13 +66,13 @@
 
     border-radius: 2px;
 
-    background-color: #cfe5fc;
+    background-color: $primary-color-lighter;
 
     &.active {
       width: 50%;
       margin: 0;
 
-      background-color: #107df0;
+      background-color: $primary-color;
     }
   }
 }

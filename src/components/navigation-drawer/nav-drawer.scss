@@ -1,3 +1,5 @@
+@import '../variables';
+
 html.lock,
 body.lock {
   overflow: hidden;
@@ -43,14 +45,14 @@ body.lock {
   font-weight: 500;
 
   &.selected {
-    color: #107df0;
-    background-color: rgba($color: #107df0, $alpha: 0.2);
+    color: $primary-color;
+    background-color: rgba($color: $primary-color, $alpha: 0.2);
 
     a {
       text-decoration: none;
 
       svg {
-        fill: #107df0;
+        fill: $primary-color;
       }
     }
   }

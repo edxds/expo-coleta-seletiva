@@ -1,3 +1,5 @@
+@import '../variables';
+
 .process {
   z-index: 1;
 }
@@ -61,10 +63,10 @@
   border: none;
   border-radius: 8px 8px 0 0;
 
-  background-color: #107df0;
+  background-color: $primary-color;
   color: white;
 
-  font-family: 'Roboto';
+  font-family: $font-family;
   font-weight: 500;
   font-size: 18px;
   text-transform: uppercase;

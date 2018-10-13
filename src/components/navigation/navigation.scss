@@ -1,3 +1,5 @@
+@import '../variables';
+
 .nav-elements {
   position: absolute;
   top: 0;
@@ -26,17 +28,17 @@
     }
 
     .hb-line {
-      stroke: #107df0;
+      stroke: $primary-color;
     }
   }
 
   &.dark {
     .drawer-button {
-      background-color: #062647;
+      background-color: $primary-color-dark;
     }
 
     .hb-line {
-      stroke: #107df0;
+      stroke: $primary-color;
     }
   }
 }
