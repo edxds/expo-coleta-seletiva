@@ -1,4 +1,4 @@
-.title-container {
+.logo-container {
   display: flex;
   flex-direction: column;
 
@@ -6,6 +6,17 @@
   align-items: center;
 
   margin-top: 42px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+
+  width: 88px;
+  height: 88px;
 }
 
 .title {

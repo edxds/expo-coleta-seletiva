@@ -1,13 +1,5 @@
-import React from 'react';
-
-import Title from '../title';
-
-import './landing.scss';
-
-const Landing = props => (
-  <div id="landing" {...props}>
-    <Title />
-  </div>
-);
+import Landing from './Landing';
+import Logo from './Logo';
 
 export default Landing;
+export { Logo };
