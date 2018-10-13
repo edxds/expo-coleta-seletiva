@@ -129,7 +129,8 @@ class Process extends React.Component {
 
   handleBarItemClick = id => {
     const to = document.querySelector(id).offsetTop;
-    const drawerMenuOffset = 43;
+    const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+    const drawerMenuOffset = 43 + (isDesktop ? 16 : 0);
 
     window.scrollTo({ top: to - drawerMenuOffset, behavior: 'smooth' });
   };
