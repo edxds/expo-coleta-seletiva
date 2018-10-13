@@ -6,7 +6,7 @@ import { ReactComponent as HomeIcon } from '../../assets/icons/home-icon.svg';
 import { ReactComponent as RecyclingIcon } from '../../assets/icons/recycling-icon.svg';
 import { ReactComponent as GalleryIcon } from '../../assets/icons/gallery-icon.svg';
 
-import './nav-drawer.scss';
+import './styles/nav-drawer.scss';
 
 const NavDrawerItem = ({ id, href, selected, onClick, children }) => {
   const handleClick = () => {
