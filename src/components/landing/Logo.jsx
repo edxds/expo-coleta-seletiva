@@ -5,9 +5,14 @@ import './styles/logo.scss';
 
 const Logo = () => (
   <div className="logo-container">
-    <img className="logo" src={LogoSvg} alt="Logotipo do projeto" />
-    <h1 className="title">Coleta Seletiva Solidária</h1>
-    <h3 className="subtitle">CEFET/RJ</h3>
+    <div className="logo-svg-container">
+      <img className="logo" src={LogoSvg} alt="Logotipo do projeto" />
+      <div className="logo-shadow" />
+    </div>
+    <div className="title-container">
+      <h1 className="title">Coleta Seletiva Solidária</h1>
+      <h3 className="subtitle">CEFET/RJ</h3>
+    </div>
   </div>
 );
 

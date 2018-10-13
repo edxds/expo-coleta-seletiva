@@ -11,6 +11,26 @@
 
   @media (min-width: $min-width-desktop) {
     margin-top: 108px;
+
+    flex-direction: row;
+  }
+
+  .logo-svg-container {
+    position: relative;
+
+    .logo-shadow {
+      position: absolute;
+      top: 0;
+
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+
+      background-color: rgba($color: #000000, $alpha: 0.5);
+      filter: blur(32px);
+
+      z-index: -1;
+    }
   }
 }
 
@@ -23,6 +43,22 @@
 
   width: 88px;
   height: 88px;
+
+  @media (min-width: $min-width-desktop) {
+    width: 128px;
+    height: 128px;
+
+    margin-top: 8px;
+  }
+}
+
+.title-container {
+  text-align: center;
+
+  @media (min-width: $min-width-desktop) {
+    text-align: left;
+    margin-left: 32px;
+  }
 }
 
 .title {
@@ -35,6 +71,15 @@
 
   margin: 0;
   margin-top: 8px;
+
+  @media (min-width: $min-width-desktop) {
+    text-align: left;
+
+    margin: 0;
+    font-size: 2rem;
+
+    max-width: 218px;
+  }
 }
 
 .subtitle {
@@ -44,4 +89,8 @@
   font-size: 1rem;
 
   margin: 0;
+
+  @media (min-width: $min-width-desktop) {
+    font-size: 1.2rem;
+  }
 }
