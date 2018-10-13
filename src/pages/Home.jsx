@@ -49,7 +49,8 @@ class Home extends React.Component {
   };
 
   handleHistoryByScroll = scrollPercentage => {
-    const { history } = this.props;
+    // TODO: Import react-router prop types
+    const { history } = this.props; // eslint-disable-line react/prop-types
     const { pathname } = history.location;
 
     if (scrollPercentage >= 1 && pathname === '/') {
