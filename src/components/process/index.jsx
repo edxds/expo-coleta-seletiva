@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import ProgressBar from './progress-bar';
 
-import { ReactComponent as ChevronUp } from '../../assets/icons/chevron-up.svg';
 import './process.scss';
 
 const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a
@@ -147,6 +146,17 @@ class Process extends React.Component {
       ...passthrough
     } = this.props;
 
+    const svgWidth = 16;
+    const svgHeight = svgWidth / 4;
+
+    const svgMiddle = svgWidth / 2;
+    const svgBottom = svgHeight;
+
+    const svgPath = !mergeHeader
+      ? `M0 ${svgBottom} L${svgMiddle} 0 L${svgWidth} ${svgBottom}`
+      : `M0 ${svgHeight / 2} L${svgMiddle} ${svgHeight /
+          2} L${svgWidth} ${svgHeight / 2}`;
+
     return (
       <div className="process">
         <div
@@ -164,8 +174,15 @@ class Process extends React.Component {
             onClick={!mergeHeader ? handleGoToProcess : null}
             type="button"
           >
-            <ChevronUp />
-            <p>Como Funciona</p>
+            <svg
+              className="chevron-up"
+              width={20}
+              height={5}
+              viewBox="0 0 20 5"
+            >
+              <path d={svgPath} />
+            </svg>
+            <p className="header-title">Como Funciona</p>
           </button>
 
           <section id="section-a">
