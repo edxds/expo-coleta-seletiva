@@ -56,9 +56,11 @@ class Home extends React.Component {
 
   handleProcessEngagementByScroll = scrollPercentage => {
     const { engagedInProcess } = this.state;
-    if (scrollPercentage > 0.5 && !engagedInProcess) {
+    const threshold = 0.2;
+
+    if (scrollPercentage > threshold && !engagedInProcess) {
       this.setState({ engagedInProcess: true });
-    } else if (scrollPercentage < 0.5 && engagedInProcess) {
+    } else if (scrollPercentage < threshold && engagedInProcess) {
       this.setState({ engagedInProcess: false });
     }
   };
