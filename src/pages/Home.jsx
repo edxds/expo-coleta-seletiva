@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { connectToTheme } from '../components/context';
 import { scrollToElement, getScrollPercentage } from '../lib/scroll';
 
 import Landing from '../components/landing';
@@ -9,10 +10,12 @@ import Process from '../components/process';
 class Home extends React.Component {
   static propTypes = {
     startOnProcess: PropTypes.bool,
+    changeTheme: PropTypes.func,
   };
 
   static defaultProps = {
     startOnProcess: false,
+    changeTheme: () => {},
   };
 
   state = {
@@ -22,6 +25,8 @@ class Home extends React.Component {
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
     this.evaluateShowProcess();
+
+    this.props.changeTheme('regular');
   }
 
   componentDidUpdate() {
@@ -65,6 +70,14 @@ class Home extends React.Component {
     }
   };
 
+  handleNavThemeByScroll = scrollPercentage => {
+    const { changeTheme } = this.props;
+    const threshold = 0.8;
+
+    const condition = scrollPercentage > threshold;
+    changeTheme(condition ? 'elevated' : 'regular');
+  };
+
   handleShowProcess = () => {
     const { history } = this.props;
     history.push('/processo');
@@ -74,6 +87,7 @@ class Home extends React.Component {
     const scrollPercentage = getScrollPercentage();
     this.handleHistoryByScroll(scrollPercentage);
     this.handleProcessEngagementByScroll(scrollPercentage);
+    this.handleNavThemeByScroll(scrollPercentage);
   };
 
   render() {
@@ -93,4 +107,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default connectToTheme(Home);

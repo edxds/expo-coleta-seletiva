@@ -1,11 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import { connectToTheme } from '../context';
 
 import HamburgerMenu from '../hamburger-menu';
 import NavDrawer from '../navigation-drawer';
 
 import './navigation.scss';
 
-export default class Navigation extends React.Component {
+class Navigation extends React.Component {
+  static propTypes = {
+    currentTheme: PropTypes.string,
+  };
+
+  static defaultProps = {
+    currentTheme: 'regular',
+  };
+
   state = {
     drawerVisible: false,
     scrolledBeyondThreshold: false,
@@ -61,16 +72,19 @@ export default class Navigation extends React.Component {
   };
 
   render() {
-    const { drawerVisible, scrolledBeyondThreshold } = this.state;
+    const { currentTheme } = this.props;
+    const { drawerVisible } = this.state;
 
     return (
-      <div className="nav-elements">
+      <div className={`nav-elements ${currentTheme}`}>
         <HamburgerMenu
           onClick={this.onHamburgerClick}
-          showBackground={scrolledBeyondThreshold}
+          // showBackground={scrolledBeyondThreshold}
         />
         <NavDrawer visible={drawerVisible} onDismiss={this.onDrawerDismiss} />
       </div>
     );
   }
 }
+
+export default connectToTheme(Navigation);
