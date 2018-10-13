@@ -99,7 +99,7 @@ class Home extends React.Component {
       <div id="home">
         <Landing />
         <Process
-          showProgressBar={startOnProcess}
+          showProgressBar={engagedInProcess}
           mergeHeader={engagedInProcess}
           handleGoToProcess={this.handleShowProcess}
         />
