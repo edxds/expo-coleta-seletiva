@@ -24,7 +24,7 @@
 
     @media (min-width: $min-width-desktop) {
       font-size: 64px;
-      margin: 112px 0px 16px 16px;
+      margin: 112px 0px 16px 32px;
     }
   }
 
@@ -39,6 +39,10 @@
     border-radius: 17px;
 
     background-color: $primary-color-dark;
+
+    @media (min-width: $min-width-desktop) {
+      margin-left: 32px;
+    }
   }
 
   &-section-title {
