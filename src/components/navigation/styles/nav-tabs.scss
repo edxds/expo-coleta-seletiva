@@ -84,8 +84,8 @@
     .nav-tab {
       background-color: $primary-color-dark;
 
-      color: white;
-      fill: white;
+      color: rgba($color: white, $alpha: 0.5);
+      fill: rgba($color: white, $alpha: 0.5);
 
       &.selected {
         color: $primary-color;
