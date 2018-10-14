@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Home from '../../pages/Home';
-import UnderConstruction from '../under-construction';
+import Gallery from '../../pages/Gallery';
 
 import { ThemeManager } from '../context';
 import Navigation from '../navigation';
@@ -21,7 +21,7 @@ const App = () => (
             path="/processo"
             render={props => <Home {...props} startOnProcess />}
           />
-          <Route component={UnderConstruction} />
+          <Route component={Gallery} />
         </Switch>
       </div>
     </ThemeManager>
