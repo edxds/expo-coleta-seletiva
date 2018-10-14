@@ -92,7 +92,6 @@ class Home extends React.Component {
   };
 
   render() {
-    const { startOnProcess } = this.props;
     const { engagedInProcess } = this.state;
 
     return (
