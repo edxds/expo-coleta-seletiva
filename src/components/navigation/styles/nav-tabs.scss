@@ -78,3 +78,19 @@
     margin-left: 0px;
   }
 }
+
+.nav-elements {
+  &.dark {
+    .nav-tab {
+      background-color: $primary-color-dark;
+
+      color: rgba($color: white, $alpha: 0.5);
+      fill: rgba($color: white, $alpha: 0.5);
+
+      &.selected {
+        color: $primary-color;
+        fill: $primary-color;
+      }
+    }
+  }
+}
