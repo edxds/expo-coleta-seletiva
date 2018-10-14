@@ -78,3 +78,19 @@
     margin-left: 0px;
   }
 }
+
+.nav-elements {
+  &.dark {
+    .nav-tab {
+      background-color: $primary-color-dark;
+
+      color: white;
+      fill: white;
+
+      &.selected {
+        color: $primary-color;
+        fill: $primary-color;
+      }
+    }
+  }
+}
