@@ -22,6 +22,7 @@ const GalleryVideoContent = ({ videos, handleVideoClick }) => {
             onClick={handleVideoClick}
           />
         ))}
+      {!isVideosEmpty && <div className="video-margin-bottom" />}
     </div>
   );
 };
