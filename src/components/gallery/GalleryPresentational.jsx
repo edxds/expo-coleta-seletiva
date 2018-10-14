@@ -6,8 +6,14 @@ import GalleryVideoContent, { videoShape } from './GalleryVideoContent';
 
 import './styles/gallery.scss';
 
-const GalleryPresentational = ({ photos, videos }) => (
+const GalleryPresentational = ({
+  photos,
+  videos,
+  handleVideoClick,
+  renderVideoOverlay,
+}) => (
   <div className="gallery">
+    {renderVideoOverlay()}
     <h1 className="gallery-title">Galeria</h1>
     <section id="gallery-photos">
       <div className="gallery-section-title-container">
@@ -21,7 +27,10 @@ const GalleryPresentational = ({ photos, videos }) => (
         <p className="gallery-section-title">Vídeos</p>
       </div>
 
-      <GalleryVideoContent videos={videos} />
+      <GalleryVideoContent
+        videos={videos}
+        handleVideoClick={handleVideoClick}
+      />
     </section>
   </div>
 );
@@ -29,6 +38,8 @@ const GalleryPresentational = ({ photos, videos }) => (
 GalleryPresentational.propTypes = {
   photos: PropTypes.arrayOf(photoShape).isRequired,
   videos: PropTypes.arrayOf(videoShape).isRequired,
+  handleVideoClick: PropTypes.func.isRequired,
+  renderVideoOverlay: PropTypes.func.isRequired,
 };
 
 export default GalleryPresentational;

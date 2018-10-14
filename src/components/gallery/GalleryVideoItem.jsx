@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 
 import { ReactComponent as PlayIcon } from '../../assets/icons/play-icon.svg';
 
-const GalleryVideoItem = ({ url }) => (
+const GalleryVideoItem = ({ url, onClick }) => (
   <div className="gallery-video-item-container">
-    <div
+    <button
       className="gallery-video-item thumb"
       style={{ backgroundImage: `url(${url})` }}
+      type="button"
+      onClick={onClick}
     />
     <div className="gallery-video-item accessories">
       <PlayIcon />
@@ -17,6 +19,7 @@ const GalleryVideoItem = ({ url }) => (
 
 GalleryVideoItem.propTypes = {
   url: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default GalleryVideoItem;

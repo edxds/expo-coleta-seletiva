@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import GalleryVideoItem from './GalleryVideoItem';
+import './styles/gallery-videos.scss';
 
-const GalleryVideoContent = ({ videos }) => {
+const GalleryVideoContent = ({ videos, handleVideoClick }) => {
   const isVideosEmpty = !videos || videos.length === 0;
 
   return (
@@ -15,7 +16,11 @@ const GalleryVideoContent = ({ videos }) => {
       {isVideosEmpty && <p>Nenhum vídeo disponível</p>}
       {!isVideosEmpty &&
         videos.map(video => (
-          <GalleryVideoItem key={video.key} url={video.url} />
+          <GalleryVideoItem
+            key={video.key}
+            url={video.url}
+            onClick={handleVideoClick}
+          />
         ))}
     </div>
   );
@@ -28,6 +33,7 @@ const videoShape = PropTypes.shape({
 
 GalleryVideoContent.propTypes = {
   videos: PropTypes.arrayOf(videoShape).isRequired,
+  handleVideoClick: PropTypes.func.isRequired,
 };
 
 export default GalleryVideoContent;

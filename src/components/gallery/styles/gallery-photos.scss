@@ -1,0 +1,51 @@
+@import '../../variables';
+
+.gallery-section-content.images {
+  -webkit-overflow-scrolling: touch;
+
+  -webkit-scroll-snap-type: mandatory;
+  scroll-snap-type: mandatory;
+  scroll-snap-type: x mandatory;
+
+  -webkit-scroll-snap-points-x: repeat(128px + 16px);
+  scroll-snap-points-x: repeat(128px + 16px);
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (min-width: $min-width-desktop) {
+    max-width: 100%;
+    flex-wrap: wrap;
+
+    overflow: hidden;
+  }
+}
+
+.gallery-photo-item {
+  width: 128px;
+  height: 128px;
+
+  border-radius: 8px;
+  background-color: $primary-color;
+
+  margin: 16px 0px 0px 16px;
+  flex: 0 0 auto;
+
+  scroll-snap-align: start;
+  scroll-margin-left: 16px;
+
+  @media (min-width: $min-width-desktop) {
+    width: 168px;
+    height: 168px;
+  }
+}
+
+#gallery-photos {
+  padding-bottom: 16px;
+}
+
+.last-content {
+  flex: 0 0 16px;
+  height: 16px;
+}

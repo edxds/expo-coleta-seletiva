@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import GalleryPhotoItem from './GalleryPhotoItem';
+import './styles/gallery-photos.scss';
 
 const GalleryPhotoContent = ({ photos }) => {
   const isPhotosEmpty = !photos || photos.length === 0;
