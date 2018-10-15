@@ -28,7 +28,7 @@ Vaz
 */
 
 import NailaImg from './pictures/naila01.jpg';
-import LucianoImg from './pictures/luciano07.JPG';
+import LucianoImg from './pictures/luciano07.jpg';
 import AytelImg from './pictures/aytel03.jpg';
 import VazImg from './pictures/vaz01.jpg';
 import ClansImg from './pictures/clans04.jpg';

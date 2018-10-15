@@ -14,7 +14,10 @@ const NavDrawerItem = ({ id, href, selected, onClick, children }) => {
   };
 
   return (
-    <li className={`nav-item ${selected ? 'selected' : ''}`} id={id}>
+    <li
+      className={`nav-item ${selected ? 'selected' : ''}`}
+      id={`drawer-item-${id}`}
+    >
       <Link to={href} onClick={handleClick}>
         {children}
       </Link>
