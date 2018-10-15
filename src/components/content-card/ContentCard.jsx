@@ -18,7 +18,25 @@ const ContentCard = ({ info }) => (
           <span>{info.group}</span>
         </div>
       </div>
-      <p>{info.text}</p>
+      <div>
+        <p className="content-title">
+          Para onde você acha que este material vai?
+        </p>
+        <p>{info.content.where}</p>
+        <p className="content-title">
+          O que este material significa para você?
+        </p>
+        <p>
+          {info.content.meaning.split('\n').map((item, key) => {
+            return (
+              <React.Fragment key={key}>
+                {item}
+                <br />
+              </React.Fragment>
+            );
+          })}
+        </p>
+      </div>
     </div>
   </div>
 );

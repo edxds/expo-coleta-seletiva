@@ -61,6 +61,21 @@
 
   .content {
     padding: 16px;
+
+    .content-title {
+      text-transform: lowercase;
+      letter-spacing: -0.025em;
+      font-size: 16px;
+
+      color: rgba($color: #000000, $alpha: 0.5);
+
+      margin: 24px 0px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      margin: 0;
+    }
   }
 
   .card-title {
