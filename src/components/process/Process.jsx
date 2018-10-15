@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ProgressBar from './ProgressBar';
+import ProportionalVideo from './ProportionalVideo';
 import ContentCard from '../content-card/ContentCard';
 
 import Image01 from '../../assets/pictures/a_img01.jpg';
@@ -161,6 +162,19 @@ class Process extends React.Component {
             </svg>
             <p className="header-title">Como Funciona</p>
           </button>
+
+          <section className="content-section">
+            <h2>Veja o vídeo!</h2>
+            <p>
+              Nesse vídeo, produzido pelo integrante do grupo Gabriel Fernandes,
+              você vê de perto como funciona o sistema de Coleta Seletiva dentro
+              do CEFET/RJ Maracanã
+            </p>
+          </section>
+
+          <div className="video-container">
+            <ProportionalVideo ratio={9 / 16} />
+          </div>
 
           <section id="section-a">
             <section className="content-section">

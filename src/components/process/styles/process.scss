@@ -58,6 +58,19 @@
     }
   }
 
+  .video-container {
+    display: flex;
+
+    iframe {
+      width: 95%;
+      margin: auto;
+
+      @media (min-width: $min-width-desktop) {
+        width: 60%;
+      }
+    }
+  }
+
   @media (min-width: $min-width-desktop) {
     transition: 0.5s;
 
