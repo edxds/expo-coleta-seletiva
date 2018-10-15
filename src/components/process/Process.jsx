@@ -2,47 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ProgressBar from './ProgressBar';
+import ContentCard from '../content-card/ContentCard';
 
+import Image01 from '../../assets/pictures/a_img01.jpg';
+import Image02 from '../../assets/pictures/a_img02.jpg';
+
+import randomizeArray from '../../lib/random';
+import subjectsData from '../../assets/subjects-data';
 import './styles/process.scss';
-
-const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a
-  tristique dui. Phasellus eget pretium nibh. Ut luctus nulla risus, vel
-  congue augue interdum a. Aliquam erat volutpat. Praesent nibh mauris,
-  bibendum ac ex sed, viverra scelerisque odio. Etiam gravida efficitur
-  libero, bibendum tincidunt nunc elementum eu. Cras sit amet nunc
-  efficitur, mattis leo eget, ultrices elit. Curabitur commodo massa ut
-  nisl rhoncus, ac molestie mi convallis. Donec molestie dignissim
-  lacus, a auctor ante ullamcorper quis. In hac habitasse platea
-  dictumst. 
-  
-  Morbi ultrices ultricies congue. In eget augue ut felis
-  ultricies faucibus suscipit eget felis. Suspendisse sollicitudin
-  euismod tortor, sed tristique leo. Mauris auctor, sem vel porta
-  interdum, sem metus volutpat neque, in tempor justo nisl eget erat.
-  Fusce scelerisque sapien placerat felis tincidunt, vitae semper massa
-  egestas. Fusce metus purus, congue eu nisl et, bibendum mollis mauris.
-  Suspendisse potenti. Mauris vel odio ut nibh venenatis tincidunt.
-  Nulla vehicula pellentesque purus. In placerat vel eros ac ultricies.
-  Nam lobortis auctor augue, quis viverra risus condimentum non. Donec
-  quis risus leo. Nulla vitae ultricies orci. Praesent at metus tortor.
-  Mauris scelerisque nulla mi, in facilisis ipsum posuere at. Nunc
-  aliquam tincidunt sem.
-  
-  Pellentesque sed consequat eros, ac vulputate
-  urna. Nulla ex dolor, suscipit eget sem eget, volutpat auctor eros.
-  Nunc facilisis augue et metus tristique mollis. Proin convallis turpis
-  nec aliquam placerat. Maecenas ullamcorper tortor nec ipsum dapibus,
-  sit amet venenatis orci posuere. Maecenas sit amet nisi a velit
-  iaculis ornare quis ut sem. Etiam id ultrices eros. Mauris pharetra
-  iaculis sapien, nec ullamcorper arcu dapibus ut. Morbi suscipit
-  tristique felis eget dignissim. Aliquam in semper odio. Integer ac
-  mauris dui. Mauris lacinia tellus ut sapien tristique, id ornare justo
-  volutpat. Phasellus interdum diam vitae fringilla lobortis. Etiam
-  commodo in arcu id pellentesque. Vivamus risus eros, dapibus nec
-  fringilla sed, pharetra eu enim. Curabitur eget lorem lacus. Sed
-  pretium, ipsum in finibus pellentesque, lorem nulla lacinia est, sed
-  lacinia ex orci eu lorem. Vivamus dictum turpis pharetra maximus
-  fermentum.`;
 
 class Process extends React.Component {
   static propTypes = {
@@ -136,6 +103,8 @@ class Process extends React.Component {
   };
 
   render() {
+    const randomized = randomizeArray(subjectsData);
+
     const pullTabHeight = 64;
     const browserHeight = document.documentElement.clientHeight;
 
@@ -194,18 +163,104 @@ class Process extends React.Component {
           </button>
 
           <section id="section-a">
-            <h2>Geração</h2>
-            <p>{lorem}</p>
+            <section className="content-section">
+              <h2>Geração</h2>
+              <p>
+                Todos nós, ao longo de um dia, somos responsáveis pela produção
+                de grande quantidade de lixo. Poucos se dão conta do volume
+                daquilo que produzimos diariamente... Muitos desses materiais
+                podem ser ainda reciclados, daí surgindo a ideia de fazer uma
+                coleta seletiva.
+              </p>
+              <p>
+                Os resíduos produzidos mais comuns são descartados nas lixeiras
+                azuis e amarelas distribuídas ao longo do CEFET/RJ. Mas atenção!
+                Na lixeira amarela devem ser colocados materiais que poderão ser
+                recicláveis (chamado &quot;lixo seco&quot;), enquanto nas azuis
+                os materiais que não são recicláveis (&quot;lixo úmido&quot;).
+                Se ficar na dúvida, consulte as imagens a seguir:
+              </p>
+              <div className="trash-photos-container">
+                <img
+                  src={Image01}
+                  alt="Ilustração mostrando exemplo de materiais recicláveis"
+                />
+                <img
+                  src={Image02}
+                  alt="Ilustração mostrando exemplo de materiais não recicláveis"
+                />
+              </div>
+              <p>
+                Materiais mais específicos como pilhas, óleo de cozinha e
+                eletrônicos possuem pontos de coleta definidos. Fique sabendo
+                onde eles estão:
+              </p>
+              <ul>
+                <li>Pilha - Prefeitura e restaurante</li>
+                <li>Óleo de cozinha - Pavilhão de Segurança do Trabalho</li>
+                <li>
+                  Resíduo eletrônico - Biblioteca, SECAD e na incubadora de
+                  empresas
+                </li>
+              </ul>
+            </section>
+
+            <div className="content-section">
+              <h2>Depoimentos</h2>
+            </div>
+
+            <div className="content-card-container">
+              {randomized.map(content => (
+                <ContentCard key={content.name} info={content} />
+              ))}
+            </div>
           </section>
 
-          <section id="section-b">
+          <section id="section-b" className="content-section">
             <h2>Separação</h2>
-            <p>{lorem}</p>
+            <p>
+              O primeiro responsável pela separação do material é... VOCÊ! Isso
+              mesmo! A destinação correta do que é reciclável ou não é a
+              primeira parte desta cadeia.
+            </p>
+            <p>
+              A partir daí, a equipe de trabalhadores terceirizados da limpeza
+              realiza a coleta interna e o armazenamento deste material até
+              chegar ao seu destino. Atualmente o responsável por esta
+              importante etapa é o Fernando.
+            </p>
           </section>
 
-          <section id="section-c">
+          <section id="section-c" className="content-section">
             <h2>Coleta</h2>
-            <p>{lorem}</p>
+            <p>
+              Os resíduos recicláveis produzidos pela comunidade cefetiana são
+              destinados a associações/cooperativas de catadores de materiais
+              recicláveis. Estas cooperativas são selecionadas através de um
+              edital com chamada pública e divulgado pela instituição. Todo o
+              processo é coordenado pela Comissão Central de Coleta Seletiva
+              Solidária do CEFET/RJ, presidida pela profª Aline Guimarães
+              Monteiro Trigo
+            </p>
+            <p>
+              Atualmente as cooperativas que recebem os materiais recicláveis
+              são COOPQUITUNGO – Cooperativa de Trabalho Coopquitungo Cooperando
+              e Reciclando Rio Ltda (CNPJ 09347750/0001-09) e a COOPEMBAU –
+              Cooperativa de Trabalho e Produção dos Catadores de Materiais
+              Recicláveis da Pavuna (CNPJ 23189494/0001-08), selecionadas a
+              partir do edital nº 1/2018.
+            </p>
+            <p>
+              Para maiores informações, visite a página da CCCSS de CEFET/RJ:
+              <br />
+              <a
+                href="http://www.cefet-rj.br/index.php/apresentacao-cccss"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                http://www.cefet-rj.br/index.php/apresentacao-cccss
+              </a>
+            </p>
           </section>
         </article>
       </div>

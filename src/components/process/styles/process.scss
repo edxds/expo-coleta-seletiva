@@ -18,7 +18,7 @@
   // padding-top: 43px;
   padding-bottom: 88px;
 
-  section {
+  .content-section {
     padding: 16px;
 
     max-width: 40em;
@@ -27,8 +27,34 @@
 
     line-height: 1.5rem;
 
-    p {
+    p,
+    ul {
       color: rgba($color: #000000, $alpha: 0.8);
+    }
+  }
+
+  .trash-photos-container {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 8px;
+    max-width: 100%;
+
+    @media (min-width: 1300px) {
+      flex-direction: row;
+    }
+
+    img {
+      margin: 8px;
+
+      border-radius: 8px;
+      box-shadow: 0px 2px 4px rgba($color: #000000, $alpha: 0.25);
+
+      max-width: 100%;
+      height: auto;
     }
   }
 
@@ -39,6 +65,8 @@
 
     box-shadow: none;
     background-color: transparent;
+
+    padding-bottom: 120px;
 
     section {
       transition: opacity 0.5s;
