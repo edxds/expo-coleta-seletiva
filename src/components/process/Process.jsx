@@ -1,5 +1,8 @@
+// TODO: Consertar reader view
+
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import ProgressBar from './ProgressBar';
 import ProportionalVideo from './ProportionalVideo';
@@ -7,6 +10,10 @@ import ContentCard from '../content-card/ContentCard';
 
 import Image01 from '../../assets/pictures/a_img01.jpg';
 import Image02 from '../../assets/pictures/a_img02.jpg';
+import Separacao01 from '../../assets/pictures/foto04.JPG';
+import Separacao02 from '../../assets/pictures/foto02.JPG';
+import Separacao03 from '../../assets/pictures/foto08.JPG';
+import { ReactComponent as ChevronUp } from '../../assets/icons/chevron-up.svg';
 
 import randomizeArray from '../../lib/random';
 import subjectsData from '../../assets/subjects-data';
@@ -177,7 +184,7 @@ class Process extends React.Component {
           </div>
 
           <section id="section-a">
-            <section className="content-section">
+            <div className="content-section">
               <h2>Geração</h2>
               <p>
                 Todos nós, ao longo de um dia, somos responsáveis pela produção
@@ -194,7 +201,7 @@ class Process extends React.Component {
                 os materiais que não são recicláveis (&quot;lixo úmido&quot;).
                 Se ficar na dúvida, consulte as imagens a seguir:
               </p>
-              <div className="trash-photos-container">
+              <div className="photos-container">
                 <img
                   src={Image01}
                   alt="Ilustração mostrando exemplo de materiais recicláveis"
@@ -217,7 +224,7 @@ class Process extends React.Component {
                   empresas
                 </li>
               </ul>
-            </section>
+            </div>
 
             <div className="content-section">
               <h2>Depoimentos</h2>
@@ -230,19 +237,34 @@ class Process extends React.Component {
             </div>
           </section>
 
-          <section id="section-b" className="content-section">
-            <h2>Separação</h2>
-            <p>
-              O primeiro responsável pela separação do material é... VOCÊ! Isso
-              mesmo! A destinação correta do que é reciclável ou não é a
-              primeira parte desta cadeia.
-            </p>
-            <p>
-              A partir daí, a equipe de trabalhadores terceirizados da limpeza
-              realiza a coleta interna e o armazenamento deste material até
-              chegar ao seu destino. Atualmente o responsável por esta
-              importante etapa é o Fernando.
-            </p>
+          <section id="section-b">
+            <div className="content-section">
+              <h2>Separação</h2>
+              <p>
+                O primeiro responsável pela separação do material é... VOCÊ!
+                Isso mesmo! A destinação correta do que é reciclável ou não é a
+                primeira parte desta cadeia.
+              </p>
+              <p>
+                A partir daí, a equipe de trabalhadores terceirizados da limpeza
+                realiza a coleta interna e o armazenamento deste material até
+                chegar ao seu destino. Atualmente o responsável por esta
+                importante etapa é o Fernando.
+              </p>
+            </div>
+
+            <div className="gallery-button-container">
+              <Link to="/galeria" className="go-to-gallery">
+                <div className="ribbon" />
+                <span>Veja todas as fotos na galeria</span>
+                <ChevronUp className="chevron-right" />
+              </Link>
+            </div>
+            <div className="photos-container big">
+              <img className="big" src={Separacao01} alt="" />
+              <img className="big" src={Separacao02} alt="" />
+              <img className="big" src={Separacao03} alt="" />
+            </div>
           </section>
 
           <section id="section-c" className="content-section">
