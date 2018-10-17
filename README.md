@@ -10,22 +10,22 @@ Exposição virtual que busca, de uma maneira mais interativa, divulgar e explic
 
 Projeto desenvolvido utilizando React, JavaScript (ES6), HTML/JSX e SCSS/CSS. Foram usados também a IDE Visual Studio Code e o linter ESLint com as configurações da AirBnB.
 
-Para rodar uma versão local do site na sua máquina, crie um diretório e nesse diretório rode o comando
+## Rodar local
+
+Clone o repositório
 
 ```bash
   git clone https://github.com/edxds/expo-coleta-seletiva
 ```
 
-Para clonar o repositório, e depois
+Instale as dependências
 
 ```bash
   npm install
 ```
 
-Para instalar as dependências e, por último,
+E inicie o dev server ️⚡️⚡️️⚡️
 
 ```bash
   npm start
 ```
-
-Para iniciar o dev server
