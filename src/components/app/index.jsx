@@ -21,7 +21,7 @@ const App = () => (
             path="/processo"
             render={props => <Home {...props} startOnProcess />}
           />
-          <Route component={Gallery} />
+          <Route exact path="/galeria" component={Gallery} />
         </Switch>
       </div>
     </ThemeManager>
