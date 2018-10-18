@@ -10,7 +10,8 @@
   margin-top: 42px;
 
   @media (min-width: $min-width-desktop) {
-    margin-top: 108px;
+    margin: auto;
+    margin-top: 200px;
 
     flex-direction: row;
   }
@@ -45,8 +46,8 @@
   height: 88px;
 
   @media (min-width: $min-width-desktop) {
-    width: 128px;
-    height: 128px;
+    width: 200px;
+    height: 200px;
 
     margin-top: 8px;
   }
@@ -76,9 +77,9 @@
     text-align: left;
 
     margin: 0;
-    font-size: 2rem;
+    font-size: 3.5rem;
 
-    max-width: 218px;
+    max-width: 378px;
   }
 }
 
@@ -91,6 +92,6 @@
   margin: 0;
 
   @media (min-width: $min-width-desktop) {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 }
