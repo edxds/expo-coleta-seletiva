@@ -191,17 +191,30 @@
   }
 
   @media (min-width: $min-width-desktop) {
-    height: 80px;
+    height: 120px;
     width: $min-width-desktop;
 
     margin: 0 auto;
     margin-bottom: 16px;
+    padding-top: 32px;
     padding-bottom: 32px;
 
-    border-radius: 8px;
+    border-radius: 12px;
 
     &.merge {
       opacity: 0;
+    }
+
+    .chevron-up {
+      stroke-width: 4px;
+
+      width: 24px;
+      height: 6px;
+    }
+
+    .header-title {
+      font-size: 2rem;
+      font-weight: 700;
     }
   }
 }

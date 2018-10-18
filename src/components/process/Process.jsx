@@ -117,7 +117,7 @@ class Process extends React.Component {
     const browserHeight = document.documentElement.clientHeight;
 
     const shouldCompensate = window.matchMedia('(min-width: 768px)').matches;
-    const compensation = pullTabHeight + (shouldCompensate ? 16 : 0);
+    const compensation = pullTabHeight + (shouldCompensate ? 56 : 0);
 
     const scrollCoverHeight = browserHeight - compensation;
 
