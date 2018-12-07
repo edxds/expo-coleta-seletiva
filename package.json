@@ -7,10 +7,10 @@
     "npm": "6.4.1"
   },
   "dependencies": {
-    "node-sass": "^4.9.3",
+    "node-sass": "^4.10.0",
     "prop-types": "^15.6.2",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
     "react-images": "^0.5.19",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.4",
@@ -24,11 +24,11 @@
   },
   "devDependencies": {
     "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-prettier": "^3.1.0",
+    "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
-    "prettier": "^1.14.3"
+    "prettier": "^1.15.3"
   },
   "browserslist": [
     ">0.2%",
