@@ -1,0 +1,115 @@
+@import '../../variables';
+
+// container que fica na página do processo
+.container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  box-sizing: border-box;
+  padding: 8px;
+
+  max-width: 100%;
+
+  // centralizar container em telas maiores
+  @media (min-width: $min-width-desktop-m) {
+    max-width: $min-width-desktop-m;
+    margin: auto;
+  }
+}
+
+// a card em si
+.card {
+  display: flex;
+  flex-direction: column;
+
+  // faz com que a card cresça até o max-width
+  flex-grow: 1;
+
+  // faz com que a card tenha no mínimo 320px
+  min-width: 320px;
+
+  max-width: $min-width-desktop;
+  min-height: 320px;
+
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba($color: #000000, $alpha: 0.25);
+
+  margin: 8px;
+  overflow: hidden;
+
+  // adicionar transição se estiver no desktop
+  @media (min-width: $min-width-desktop) {
+    transition: 0.2s;
+
+    &:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 16px rgba($color: #000000, $alpha: 0.25);
+    }
+  }
+
+  // responsividade
+  @media (min-width: $min-width-desktop) {
+    max-width: 366px;
+  }
+
+  @media (min-width: $min-width-desktop-m) {
+    min-width: 366px;
+    max-width: 424px;
+  }
+}
+
+// foto que fica na card
+.header {
+  background-size: cover;
+  background-position: center;
+}
+
+// conteudo/texto da card
+.content {
+  padding: 16px;
+}
+
+// container do titulo da card
+// css-modules não suporta hífens
+.titleContainer {
+  display: flex;
+  align-items: center;
+}
+
+// titulo da card (nome da pessoa)
+.title {
+  font-weight: 500;
+}
+
+// badge q fica do lado do titulo (turma)
+.badge {
+  box-sizing: border-box;
+  margin-left: 16px;
+  padding: 4px 16px;
+
+  height: 22px;
+  border-radius: 11px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 12px;
+  text-transform: uppercase;
+
+  color: rgba($color: #000000, $alpha: 0.5);
+  background-color: rgba($color: #000000, $alpha: 0.15);
+}
+
+.question {
+  color: rgba($color: #000000, $alpha: 0.5);
+
+  margin: 24px 0px;
+  margin-bottom: 8px;
+}
+
+.answer {
+  margin: 0;
+}

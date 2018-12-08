@@ -18,6 +18,7 @@ import { ReactComponent as ChevronUp } from '../../assets/icons/chevron-up.svg';
 import randomizeArray from '../../lib/random';
 import subjectsData from '../../assets/subjects-data';
 import './styles/process.scss';
+import contentCardStyles from '../content-card/styles/content-card.module.scss';
 
 class Process extends React.Component {
   static propTypes = {
@@ -230,7 +231,7 @@ class Process extends React.Component {
               <h2>Depoimentos</h2>
             </div>
 
-            <div className="content-card-container">
+            <div className={contentCardStyles.container}>
               {randomized.map(content => (
                 <ContentCard key={content.name} info={content} />
               ))}

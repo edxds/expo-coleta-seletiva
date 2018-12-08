@@ -34,7 +34,6 @@ export default class ProportionalHeader extends React.Component {
     return (
       <div
         ref={this.elRef}
-        className="header"
         style={{ backgroundImage: `url(${image})`, ...imageOptions }}
         {...pass}
       />
