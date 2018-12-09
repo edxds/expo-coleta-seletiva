@@ -2,18 +2,18 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import ProgressBar from './ProgressBar';
 import ProportionalVideo from './ProportionalVideo';
 import ContentCard from '../content-card/ContentCard';
+import ProcessTab from './ProcessTab';
+import RibbonLink from './RibbonButton';
 
 import Image01 from '../../assets/pictures/a_img01.jpg';
 import Image02 from '../../assets/pictures/a_img02.jpg';
 import Separacao01 from '../../assets/pictures/foto04.JPG';
 import Separacao02 from '../../assets/pictures/foto02.JPG';
 import Separacao03 from '../../assets/pictures/foto08.JPG';
-import { ReactComponent as ChevronUp } from '../../assets/icons/chevron-up.svg';
 
 import randomizeArray from '../../lib/random';
 import subjectsData from '../../assets/subjects-data';
@@ -130,17 +130,6 @@ class Process extends React.Component {
       ...passthrough
     } = this.props;
 
-    const svgWidth = 16;
-    const svgHeight = svgWidth / 4;
-
-    const svgMiddle = svgWidth / 2;
-    const svgBottom = svgHeight;
-
-    const svgPath = !mergeHeader
-      ? `M0 ${svgBottom} L${svgMiddle} 0 L${svgWidth} ${svgBottom}`
-      : `M0 ${svgHeight / 2} L${svgMiddle} ${svgHeight /
-          2} L${svgWidth} ${svgHeight / 2}`;
-
     return (
       <div className="process">
         <ProgressBar
@@ -155,21 +144,11 @@ class Process extends React.Component {
           className={`process-container ${mergeHeader ? 'show-bg' : ''}`}
           {...passthrough}
         >
-          <button
-            className={`process-header ${mergeHeader ? 'merge' : ''}`}
-            onClick={!mergeHeader ? handleGoToProcess : null}
-            type="button"
-          >
-            <svg
-              className="chevron-up"
-              width={20}
-              height={5}
-              viewBox="0 0 20 5"
-            >
-              <path d={svgPath} />
-            </svg>
-            <p className="header-title">Como Funciona</p>
-          </button>
+          <ProcessTab
+            title="Como Funciona"
+            disappear={mergeHeader}
+            handleClick={handleGoToProcess}
+          />
 
           <section className="content-section">
             <h2>Veja o vídeo!</h2>
@@ -255,12 +234,12 @@ class Process extends React.Component {
             </div>
 
             <div className="gallery-button-container">
-              <Link to="/galeria" className="go-to-gallery">
-                <div className="ribbon" />
-                <span>Veja todas as fotos na galeria</span>
-                <ChevronUp className="chevron-right" />
-              </Link>
+              <RibbonLink
+                to="/galeria"
+                title="Veja todas as fotos na galeria"
+              />
             </div>
+
             <div className="photos-container big">
               <img className="big" src={Separacao01} alt="" />
               <img className="big" src={Separacao02} alt="" />
