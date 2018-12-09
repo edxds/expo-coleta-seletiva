@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { ReactComponent as ChevronUp } from '../../assets/icons/chevron-up.svg';
-import './styles/ribbon-link.scss';
+import styles from './styles/ribbon-link.module.scss';
 
 const RibbonLink = ({ to, title }) => (
-  <Link to={to} className="ribbon-link">
-    <div className="ribbon" />
+  <Link to={to} className={styles.link}>
+    <div className={styles.ribbon} />
     <span>{title}</span>
-    <ChevronUp className="chevron-right" />
+    <ChevronUp className={styles.chevron} />
   </Link>
 );
 
