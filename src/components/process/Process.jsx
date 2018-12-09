@@ -141,11 +141,7 @@ class Process extends React.Component {
 
     return (
       <div className="process">
-        <div
-          className={`progress-bar-container ${showProgressBar ? 'show' : ''}`}
-        >
-          <ProgressBar handleClick={this.handleBarItemClick} />
-        </div>
+        <ProgressBar show={showProgressBar} handleClick={this.handleBarItemClick} />
         <div
           className="process-scroll-cover"
           style={{ height: scrollCoverHeight }}

@@ -39,11 +39,11 @@ ProgressBarItem.propTypes = {
   id: PropTypes.string.isRequired,
 };
 
-const ProgressBar = ({ elevate, handleClick, ...props }) => {
-  const elevateClassName = elevate ? 'elevated' : '';
+const ProgressBar = ({ show, handleClick, ...props }) => {
+  const showClassname = show ? 'show' : '';
 
   return (
-    <div className={`progress-header ${elevateClassName}`} {...props}>
+    <div className={`progress-header ${showClassname}`} {...props}>
       <ProgressBarItem onClick={handleClick} sectionId="#section-a" id="a">
         <TrashIcon />
       </ProgressBarItem>
@@ -60,6 +60,7 @@ const ProgressBar = ({ elevate, handleClick, ...props }) => {
 };
 
 ProgressBar.propTypes = {
+  show: PropTypes.bool.isRequired,
   handleClick: PropTypes.func.isRequired,
 };
 
