@@ -19,6 +19,7 @@ import randomizeArray from '../../lib/random';
 import subjectsData from '../../assets/subjects-data';
 import './styles/process.scss';
 import contentCardStyles from '../content-card/styles/content-card.module.scss';
+import progressBarStyles from './styles/progress-bar.module.scss';
 
 class Process extends React.Component {
   static propTypes = {
@@ -98,9 +99,9 @@ class Process extends React.Component {
     progresses[1].style.width = `${bExpo * 100}%`;
     progresses[2].style.width = `${cExpo * 100}%`;
 
-    icons[0].classList.toggle('active', aActive);
-    icons[1].classList.toggle('active', bActive);
-    icons[2].classList.toggle('active', cActive);
+    icons[0].classList.toggle(progressBarStyles.active, aActive);
+    icons[1].classList.toggle(progressBarStyles.active, bActive);
+    icons[2].classList.toggle(progressBarStyles.active, cActive);
   };
 
   handleBarItemClick = id => {
@@ -142,7 +143,10 @@ class Process extends React.Component {
 
     return (
       <div className="process">
-        <ProgressBar show={showProgressBar} handleClick={this.handleBarItemClick} />
+        <ProgressBar
+          show={showProgressBar}
+          handleClick={this.handleBarItemClick}
+        />
         <div
           className="process-scroll-cover"
           style={{ height: scrollCoverHeight }}

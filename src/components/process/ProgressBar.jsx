@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import { ReactComponent as TrashIcon } from '../../assets/icons/trash-icon.svg';
 import { ReactComponent as ChecklistIcon } from '../../assets/icons/checklist-filled-icon.svg';
 import { ReactComponent as TruckIcon } from '../../assets/icons/truck-icon.svg';
-import './styles/progress-bar.scss';
+// import './styles/progress-bar.scss';
+import styles from './styles/progress-bar.module.scss';
 
 const ProgressBarItem = ({ onClick, sectionId, children, id }) => {
   const handleClick = () => {
@@ -13,18 +14,18 @@ const ProgressBarItem = ({ onClick, sectionId, children, id }) => {
 
   return (
     <div
-      className="progress-header-item"
+      className={styles.itemContainer}
       id={`progress-header-item-${id}`}
       aria-hidden="true"
       onClick={handleClick}
     >
-      <div className="progress-header-icon" id={`progress-item-icon-${id}`}>
+      <div className={styles.itemIcon} id={`progress-item-icon-${id}`}>
         {children}
       </div>
 
-      <div className="progress-header-progress">
+      <div className={styles.itemProgress}>
         <div
-          className="progress-header-progress active"
+          className={`${styles.itemProgress} ${styles.active}`}
           id={`progress-item-progress-${id}`}
         />
       </div>
@@ -40,10 +41,10 @@ ProgressBarItem.propTypes = {
 };
 
 const ProgressBar = ({ show, handleClick, ...props }) => {
-  const showClassname = show ? 'show' : '';
+  const showClassname = show ? styles.show : '';
 
   return (
-    <div className={`progress-header ${showClassname}`} {...props}>
+    <div className={`${styles.container} ${showClassname}`} {...props}>
       <ProgressBarItem onClick={handleClick} sectionId="#section-a" id="a">
         <TrashIcon />
       </ProgressBarItem>
