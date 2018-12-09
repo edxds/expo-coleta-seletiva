@@ -6,13 +6,11 @@ import { ReactComponent as ChevronUp } from '../../assets/icons/chevron-up.svg';
 import './styles/ribbon-link.scss';
 
 const RibbonLink = ({ to, title }) => (
-  <div className="gallery-button-container">
-    <Link to={to} className="go-to-gallery">
-      <div className="ribbon" />
-      <span>{title}</span>
-      <ChevronUp className="chevron-right" />
-    </Link>
-  </div>
+  <Link to={to} className="ribbon-link">
+    <div className="ribbon" />
+    <span>{title}</span>
+    <ChevronUp className="chevron-right" />
+  </Link>
 );
 
 RibbonLink.propTypes = {

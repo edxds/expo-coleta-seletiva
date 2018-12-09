@@ -231,7 +231,12 @@ class Process extends React.Component {
               </p>
             </div>
 
-            <RibbonLink to="/galeria" title="Veja todas as fotos na galeria" />
+            <div className="gallery-button-container">
+              <RibbonLink
+                to="/galeria"
+                title="Veja todas as fotos na galeria"
+              />
+            </div>
 
             <div className="photos-container big">
               <img className="big" src={Separacao01} alt="" />

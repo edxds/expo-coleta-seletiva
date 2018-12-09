@@ -1,68 +1,61 @@
 @import '../../variables';
 
-.gallery-button-container {
+.ribbon-link {
+  position: relative;
+  overflow: hidden;
+
   display: flex;
-  width: 100%;
+  margin: auto;
 
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
 
-  a {
-    position: relative;
-    overflow: hidden;
+  box-sizing: border-box;
+  margin: 16px 0px;
+  padding-left: 16px;
+  padding-right: 8px;
 
-    display: flex;
-    margin: auto;
+  min-width: 90%;
+  max-width: 300px;
+  height: 56px;
 
-    justify-content: space-between;
-    align-items: center;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba($color: #000000, $alpha: 0.25);
 
-    box-sizing: border-box;
-    margin: 16px 0px;
-    padding-left: 16px;
-    padding-right: 8px;
+  color: $primary-color;
+  text-decoration: none;
+  font-weight: 500;
 
-    min-width: 90%;
-    max-width: 300px;
-    height: 56px;
+  @media (min-width: $min-width-desktop) {
+    transition: 0.5s;
 
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba($color: #000000, $alpha: 0.25);
+    min-width: 300px;
 
-    color: $primary-color;
-    text-decoration: none;
-    font-weight: 500;
-
-    @media (min-width: $min-width-desktop) {
-      transition: 0.5s;
-
-      min-width: 300px;
-
-      &:hover {
-        transform: scale(1.025);
-        box-shadow: 0px 8px 16px rgba($color: #000000, $alpha: 0.25);
-      }
+    &:hover {
+      transform: scale(1.025);
+      box-shadow: 0px 8px 16px rgba($color: #000000, $alpha: 0.25);
     }
+  }
 
-    .chevron-right {
-      fill: none;
-      overflow: visible;
+  .chevron-right {
+    fill: none;
+    overflow: visible;
 
-      stroke: $primary-color;
-      stroke-width: 4px;
-      stroke-linecap: round;
+    stroke: $primary-color;
+    stroke-width: 4px;
+    stroke-linecap: round;
 
-      transform: rotate(90deg) scale(0.4, 0.6);
-    }
+    transform: rotate(90deg) scale(0.4, 0.6);
+  }
 
-    .ribbon {
-      position: absolute;
-      bottom: 0;
-      left: 0;
+  .ribbon {
+    position: absolute;
+    bottom: 0;
+    left: 0;
 
-      width: 100%;
-      height: 4px;
+    width: 100%;
+    height: 4px;
 
-      background-color: $primary-color;
-    }
+    background-color: $primary-color;
   }
 }

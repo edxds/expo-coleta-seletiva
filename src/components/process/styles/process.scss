@@ -90,6 +90,13 @@
     }
   }
 
+  .gallery-button-container {
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+  }
+
   @media (min-width: $min-width-desktop) {
     transition: 0.5s;
 
