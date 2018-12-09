@@ -2,19 +2,18 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import ProgressBar from './ProgressBar';
 import ProportionalVideo from './ProportionalVideo';
 import ContentCard from '../content-card/ContentCard';
 import ProcessTab from './ProcessTab';
+import RibbonLink from './RibbonButton';
 
 import Image01 from '../../assets/pictures/a_img01.jpg';
 import Image02 from '../../assets/pictures/a_img02.jpg';
 import Separacao01 from '../../assets/pictures/foto04.JPG';
 import Separacao02 from '../../assets/pictures/foto02.JPG';
 import Separacao03 from '../../assets/pictures/foto08.JPG';
-import { ReactComponent as ChevronUp } from '../../assets/icons/chevron-up.svg';
 
 import randomizeArray from '../../lib/random';
 import subjectsData from '../../assets/subjects-data';
@@ -232,13 +231,8 @@ class Process extends React.Component {
               </p>
             </div>
 
-            <div className="gallery-button-container">
-              <Link to="/galeria" className="go-to-gallery">
-                <div className="ribbon" />
-                <span>Veja todas as fotos na galeria</span>
-                <ChevronUp className="chevron-right" />
-              </Link>
-            </div>
+            <RibbonLink to="/galeria" title="Veja todas as fotos na galeria" />
+
             <div className="photos-container big">
               <img className="big" src={Separacao01} alt="" />
               <img className="big" src={Separacao02} alt="" />
