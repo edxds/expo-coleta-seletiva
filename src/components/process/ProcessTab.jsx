@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './styles/process-tab.scss';
+import styles from './styles/process-tab.module.scss';
 
 const ProcessTab = ({ title, disappear, handleClick }) => {
   const svgWidth = 16;
@@ -14,16 +14,15 @@ const ProcessTab = ({ title, disappear, handleClick }) => {
     : `M0 ${svgHeight / 2} L${svgMiddle} ${svgHeight /
         2} L${svgWidth} ${svgHeight / 2}`;
 
+  const buttonClass = `${styles.container} ${disappear ? styles.merge : ''}`;
+  const buttonOnClick = !disappear ? handleClick : null;
+
   return (
-    <button
-      className={`process-header ${disappear ? 'merge' : ''}`}
-      onClick={!disappear ? handleClick : null}
-      type="button"
-    >
-      <svg className="chevron-up" width={20} height={5} viewBox="0 0 20 5">
+    <button className={buttonClass} onClick={buttonOnClick} type="button">
+      <svg className={styles.chevron} width={20} height={5} viewBox="0 0 20 5">
         <path d={svgPath} />
       </svg>
-      <p className="header-title">{title}</p>
+      <p className={styles.title}>{title}</p>
     </button>
   );
 };
