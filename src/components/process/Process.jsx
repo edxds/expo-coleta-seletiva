@@ -17,7 +17,8 @@ import Separacao03 from '../../assets/pictures/foto08.JPG';
 
 import randomizeArray from '../../lib/random';
 import subjectsData from '../../assets/subjects-data';
-import './styles/process.scss';
+
+import styles from './styles/process.module.scss';
 import contentCardStyles from '../content-card/styles/content-card.module.scss';
 import progressBarStyles from './styles/progress-bar.module.scss';
 
@@ -131,17 +132,15 @@ class Process extends React.Component {
     } = this.props;
 
     return (
-      <div className="process">
+      <div className={styles.container}>
         <ProgressBar
           show={showProgressBar}
           handleClick={this.handleBarItemClick}
         />
-        <div
-          className="process-scroll-cover"
-          style={{ height: scrollCoverHeight }}
-        />
+        <div style={{ height: scrollCoverHeight }} />
         <article
-          className={`process-container ${mergeHeader ? 'show-bg' : ''}`}
+          id="process"
+          className={`${styles.content} ${!mergeHeader ? styles.hide : ''}`}
           {...passthrough}
         >
           <ProcessTab
@@ -150,7 +149,7 @@ class Process extends React.Component {
             handleClick={handleGoToProcess}
           />
 
-          <section className="content-section">
+          <section className={styles.readingRow}>
             <h2>Veja o vídeo!</h2>
             <p>
               Nesse vídeo, produzido pelo integrante do grupo Gabriel Fernandes,
@@ -159,12 +158,14 @@ class Process extends React.Component {
             </p>
           </section>
 
-          <div className="video-container">
-            <ProportionalVideo ratio={9 / 16} />
+          <div className={`${styles.fullRow} ${styles.restrict}`}>
+            <ProportionalVideo ratio={9 / 16} className={styles.columnSingle} />
           </div>
 
+          <div className={styles.rowSeparator} />
+
           <section id="section-a">
-            <div className="content-section">
+            <div className={styles.readingRow}>
               <h2>Geração</h2>
               <p>
                 Todos nós, ao longo de um dia, somos responsáveis pela produção
@@ -181,16 +182,20 @@ class Process extends React.Component {
                 os materiais que não são recicláveis (&quot;lixo úmido&quot;).
                 Se ficar na dúvida, consulte as imagens a seguir:
               </p>
-              <div className="photos-container">
-                <img
-                  src={Image01}
-                  alt="Ilustração mostrando exemplo de materiais recicláveis"
-                />
-                <img
-                  src={Image02}
-                  alt="Ilustração mostrando exemplo de materiais não recicláveis"
-                />
-              </div>
+            </div>
+            <div className={`${styles.fullRow} ${styles.restrict}`}>
+              <img
+                className={`${styles.columnHalf} ${styles.elevatedImg}`}
+                src={Image01}
+                alt="Ilustração mostrando exemplo de materiais recicláveis"
+              />
+              <img
+                className={`${styles.columnHalf} ${styles.elevatedImg}`}
+                src={Image02}
+                alt="Ilustração mostrando exemplo de materiais não recicláveis"
+              />
+            </div>
+            <div className={styles.readingRow}>
               <p>
                 Materiais mais específicos como pilhas, óleo de cozinha e
                 eletrônicos possuem pontos de coleta definidos. Fique sabendo
@@ -206,7 +211,9 @@ class Process extends React.Component {
               </ul>
             </div>
 
-            <div className="content-section">
+            <div className={styles.rowSeparator} />
+
+            <div className={styles.readingRow}>
               <h2>Depoimentos</h2>
             </div>
 
@@ -217,8 +224,10 @@ class Process extends React.Component {
             </div>
           </section>
 
+          <div className={styles.rowSeparator} />
+
           <section id="section-b">
-            <div className="content-section">
+            <div className={styles.readingRow}>
               <h2>Separação</h2>
               <p>
                 O primeiro responsável pela separação do material é... VOCÊ!
@@ -233,21 +242,35 @@ class Process extends React.Component {
               </p>
             </div>
 
-            <div className="gallery-button-container">
+            <div className={`${styles.fullRow} ${styles.restrict}`}>
               <RibbonLink
                 to="/galeria"
                 title="Veja todas as fotos na galeria"
               />
             </div>
 
-            <div className="photos-container big">
-              <img className="big" src={Separacao01} alt="" />
-              <img className="big" src={Separacao02} alt="" />
-              <img className="big" src={Separacao03} alt="" />
+            <div className={`${styles.fullRow} ${styles.restrict}`}>
+              <img
+                className={`${styles.columnThird} ${styles.elevatedImg}`}
+                src={Separacao01}
+                alt=""
+              />
+              <img
+                className={`${styles.columnThird} ${styles.elevatedImg}`}
+                src={Separacao02}
+                alt=""
+              />
+              <img
+                className={`${styles.columnThird} ${styles.elevatedImg}`}
+                src={Separacao03}
+                alt=""
+              />
             </div>
           </section>
 
-          <section id="section-c" className="content-section">
+          <div className={styles.rowSeparator} />
+
+          <section id="section-c" className={styles.readingRow}>
             <h2>Coleta</h2>
             <p>
               Os resíduos recicláveis produzidos pela comunidade cefetiana são

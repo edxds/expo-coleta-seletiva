@@ -1,0 +1,116 @@
+@import '../../variables';
+
+.cover {
+  background-color: transparent;
+}
+
+.container {
+  z-index: 1;
+  width: 100%;
+}
+
+.content {
+  transition: 0.5s;
+  background-color: white;
+
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0px -4px 16px rgba($color: #000000, $alpha: 0.5);
+
+  // 24 para espaçar ao começo do hamburger
+  // 43 para espaçar ao começo do hamburger
+  // 62 para espaçar ao final do hamburger
+  // padding-top: 43px;
+
+  // espaçamento para barra de progresso
+  padding-bottom: 88px;
+
+  @media (min-width: $min-width-desktop) {
+    padding-top: 16px;
+
+    // espaçamento para barra de progresso
+    padding-bottom: 120px;
+  }
+}
+
+.content.hide {
+  // só fazer fade in no desktops
+  @media (min-width: $min-width-desktop) {
+    background-color: transparent;
+    box-shadow: none;
+
+    // selecionar todos os elementos menos
+    // a tab do processo
+    & > * {
+      &:not([class^='process-tab']) {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.title {
+  color: black;
+}
+
+.rowSeparator {
+  width: 100%;
+  height: 64px;
+}
+
+.readingRow {
+  padding: 4px 16px;
+
+  max-width: 40em;
+  margin: auto;
+
+  line-height: 1.5rem;
+  color: rgba($color: #000000, $alpha: 0.8);
+}
+
+.fullRow {
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+  padding: 4px 16px;
+
+  justify-content: center;
+  align-items: center;
+
+  @media (min-width: $min-width-desktop) {
+    flex-direction: row;
+  }
+}
+
+.fullRow.restrict {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.columnSingle {
+  width: 100%;
+  margin: 8px;
+}
+
+.columnHalf {
+  width: 100%;
+  margin: 8px;
+
+  @media (min-width: $min-width-desktop) {
+    width: calc(50% - 8px);
+  }
+}
+
+.columnThird {
+  width: 100%;
+  margin: 8px;
+
+  @media (min-width: $min-width-desktop) {
+    width: calc(33% - 8px);
+  }
+}
+
+.elevatedImg {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}

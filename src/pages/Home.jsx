@@ -42,7 +42,7 @@ class Home extends React.Component {
     const scrollPercentage = getScrollPercentage();
 
     if (startOnProcess && scrollPercentage < 0.9) {
-      scrollToElement({ selector: '.process-container' });
+      scrollToElement({ selector: '#process' });
     } else if (startOnProcess === false && scrollPercentage >= 1) {
       scrollToElement({ selector: '#home' });
     }
