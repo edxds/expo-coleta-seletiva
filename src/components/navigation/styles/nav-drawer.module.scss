@@ -1,0 +1,88 @@
+@import '../../variables';
+
+.drawer {
+  transition: transform 0.5s;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+
+  transform: translateX(calc(56px - 100vw));
+  width: calc(100vw - 56px);
+
+  background-color: white;
+  pointer-events: all;
+}
+
+.drawer.visible {
+  transform: none;
+}
+
+.backdrop {
+  transition: 0.5s;
+
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba($color: #000000, $alpha: 0.8);
+  opacity: 0;
+
+  z-index: -1;
+  pointer-events: none;
+}
+
+.backdrop.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.itemsContainer {
+  list-style: none;
+
+  padding: 22px;
+  margin: 0;
+}
+
+// container de item do drawer
+.itemContainer {
+  transition: 0.2s;
+
+  display: flex;
+  align-items: center;
+
+  border-radius: 8px;
+
+  color: rgba($color: #000000, $alpha: 0.5);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  flex: 1;
+
+  padding: 14px;
+  border-radius: 8px;
+
+  color: inherit;
+  text-decoration: none;
+
+  svg {
+    fill: rgba($color: #000000, $alpha: 0.5);
+  }
+}
+
+.itemContainer.selected {
+  color: $primary-color;
+  background-color: rgba($color: $primary-color, $alpha: 0.2);
+
+  svg {
+    fill: $primary-color;
+  }
+}
+
+.title {
+  margin: 3px 0px 0px 14px;
+}

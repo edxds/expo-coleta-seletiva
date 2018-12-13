@@ -1,0 +1,28 @@
+@import '../../variables';
+
+:global(html.lock),
+:global(body.lock) {
+  overflow: hidden;
+  scroll-behavior: none;
+}
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  pointer-events: none;
+  z-index: 99;
+
+  @media (min-width: $min-width-desktop) {
+    top: 32px;
+    bottom: unset;
+
+    display: flex;
+
+    // alinhar tabs ao centro
+    justify-content: center;
+  }
+}

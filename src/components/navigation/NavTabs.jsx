@@ -1,20 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { ReactComponent as HomeIcon } from '../../assets/icons/home-icon.svg';
 import { ReactComponent as RecyclingIcon } from '../../assets/icons/recycling-icon.svg';
 import { ReactComponent as GalleryIcon } from '../../assets/icons/gallery-icon.svg';
 
-import './styles/nav-tabs.scss';
+import styles from './styles/nav-tabs.module.scss';
 
 const NavTab = ({ children, className, isSelected, id, to, ...props }) => (
   <Link
     to={to}
-    className={`nav-tab ${isSelected(id) ? 'selected' : ''}`}
+    className={`${styles.tab} ${isSelected(id) ? styles.selected : ''}`}
     {...props}
   >
     {children}
-    <div className="selected-indicator" />
+    <div className={styles.indicator} />
   </Link>
 );
 
@@ -48,24 +49,39 @@ class NavTabs extends React.Component {
   isSelected = id => this.state.selectedId === id;
 
   render() {
+    const { theme } = this.props;
+    const classNameForTheme = {
+      regular: '',
+      elevated: '',
+      dark: styles.dark,
+    };
+
     return (
-      <div className="nav-tabs-container">
+      <div className={`${styles.container} ${classNameForTheme[theme]}`}>
         <NavTab to="/" id="home" isSelected={this.isSelected}>
-          <HomeIcon className="icon" />
-          <p className="tab-title">Início</p>
+          <HomeIcon className={styles.icon} />
+          <p className={styles.title}>Início</p>
         </NavTab>
         <NavTab to="/processo" id="process" isSelected={this.isSelected}>
-          <RecyclingIcon className="icon" />
-          <p className="tab-title">Como Funciona</p>
+          <RecyclingIcon className={styles.icon} />
+          <p className={styles.title}>Como Funciona</p>
         </NavTab>
         <NavTab to="/galeria" id="gallery" isSelected={this.isSelected}>
-          <GalleryIcon className="icon" />
-          <p className="tab-title">Galeria</p>
+          <GalleryIcon className={styles.icon} />
+          <p className={styles.title}>Galeria</p>
         </NavTab>
       </div>
     );
   }
 }
+
+NavTabs.propTypes = {
+  theme: PropTypes.string,
+};
+
+NavTabs.defaultProps = {
+  theme: 'regular',
+};
 
 export default NavTabs;
 export { NavTab };

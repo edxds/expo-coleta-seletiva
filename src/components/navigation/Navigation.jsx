@@ -7,7 +7,8 @@ import DrawerButton from './DrawerButton';
 import NavDrawer from './NavDrawer';
 import NavTabs from './NavTabs';
 
-import './styles/navigation.scss';
+// import './styles/navigation.scss';
+import styles from './styles/navigation.module.scss';
 
 class Navigation extends React.Component {
   static propTypes = {
@@ -79,14 +80,14 @@ class Navigation extends React.Component {
     const isDesktop = window.matchMedia('(min-width: 768px)').matches;
 
     return (
-      <div className={`nav-elements ${currentTheme}`}>
+      <div className={styles.container}>
         {isDesktop ? (
-          <NavTabs />
+          <NavTabs theme={currentTheme} />
         ) : (
           <React.Fragment>
             <DrawerButton
+              theme={currentTheme}
               onClick={this.onHamburgerClick}
-              // showBackground={scrolledBeyondThreshold}
             />
             <NavDrawer
               visible={drawerVisible}

@@ -6,7 +6,7 @@ import { ReactComponent as HomeIcon } from '../../assets/icons/home-icon.svg';
 import { ReactComponent as RecyclingIcon } from '../../assets/icons/recycling-icon.svg';
 import { ReactComponent as GalleryIcon } from '../../assets/icons/gallery-icon.svg';
 
-import './styles/nav-drawer.scss';
+import styles from './styles/nav-drawer.module.scss';
 
 const NavDrawerItem = ({ id, href, selected, onClick, children }) => {
   const handleClick = () => {
@@ -15,10 +15,10 @@ const NavDrawerItem = ({ id, href, selected, onClick, children }) => {
 
   return (
     <li
-      className={`nav-item ${selected ? 'selected' : ''}`}
+      className={`${styles.itemContainer} ${selected ? styles.selected : ''}`}
       id={`drawer-item-${id}`}
     >
-      <Link to={href} onClick={handleClick}>
+      <Link to={href} onClick={handleClick} className={styles.item}>
         {children}
       </Link>
     </li>
@@ -49,7 +49,7 @@ class NavDrawer extends React.Component {
   }
 
   getVisibility = (className, condition) =>
-    `${className} ${condition ? 'visible' : ''}`;
+    `${className} ${condition ? styles.visible : ''}`;
 
   getIdForLocation = location => {
     switch (location) {
@@ -79,8 +79,8 @@ class NavDrawer extends React.Component {
 
     return (
       <React.Fragment>
-        <nav className={this.getVisibility('nav-drawer', visible)}>
-          <ul className="nav-items">
+        <nav className={this.getVisibility(styles.drawer, visible)}>
+          <ul className={styles.itemsContainer}>
             <NavDrawerItem
               href="/"
               id="home"
@@ -88,7 +88,7 @@ class NavDrawer extends React.Component {
               onClick={this.handleClick}
             >
               <HomeIcon />
-              <span className="nav-item-title">Início</span>
+              <span className={styles.title}>Início</span>
             </NavDrawerItem>
             <NavDrawerItem
               href="/processo"
@@ -97,7 +97,7 @@ class NavDrawer extends React.Component {
               onClick={this.handleClick}
             >
               <RecyclingIcon style={{ marginTop: 4 }} />
-              <span className="nav-item-title">O Processo</span>
+              <span className={styles.title}>O Processo</span>
             </NavDrawerItem>
             <NavDrawerItem
               href="/galeria"
@@ -106,14 +106,13 @@ class NavDrawer extends React.Component {
               onClick={this.handleClick}
             >
               <GalleryIcon />
-              <span className="nav-item-title">Galeria</span>
+              <span className={styles.title}>Galeria</span>
             </NavDrawerItem>
           </ul>
         </nav>
         <div
-          className={this.getVisibility('nav-backdrop', visible)}
+          className={this.getVisibility(styles.backdrop, visible)}
           onClick={visible ? onDismiss : undefined}
-          style={{ pointerEvents: !visible ? 'none' : 'auto' }}
           aria-hidden
         />
       </React.Fragment>
