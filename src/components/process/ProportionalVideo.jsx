@@ -18,8 +18,6 @@ export default class ProportionalVideo extends React.Component {
   }
 
   getDimensions = _ratio => {
-    console.log({ el: this.elRef.current });
-
     const width = this.elRef.current.clientWidth;
     const height = width * _ratio;
 
