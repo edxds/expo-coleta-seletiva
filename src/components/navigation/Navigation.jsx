@@ -22,6 +22,7 @@ class Navigation extends React.Component {
   state = {
     drawerVisible: false,
     scrolledBeyondThreshold: false,
+    isDesktop: true,
   };
 
   canScroll = true;
@@ -29,11 +30,13 @@ class Navigation extends React.Component {
   componentDidMount() {
     document.addEventListener('touchmove', this.handleTouchMove);
     document.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('resize', this.handleResize);
   }
 
   componentWillUnmount() {
     document.removeEventListener('touchmove', this.handleTouchMove);
     document.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('resize', this.handleResize);
   }
 
   onHamburgerClick = () => {
@@ -73,11 +76,17 @@ class Navigation extends React.Component {
     }
   };
 
+  handleResize = () => {
+    const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+
+    if (this.state.isDesktop !== isDesktop) {
+      this.setState({ isDesktop });
+    }
+  };
+
   render() {
     const { currentTheme } = this.props;
-    const { drawerVisible } = this.state;
-
-    const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+    const { drawerVisible, isDesktop } = this.state;
 
     return (
       <div className={styles.container}>
