@@ -22,6 +22,13 @@ import styles from './styles/process.module.scss';
 import contentCardStyles from '../content-card/styles/content-card.module.scss';
 import progressBarStyles from './styles/progress-bar.module.scss';
 
+const getExponentialPercentage = x => {
+  const a = 5;
+  return (a ** x - 1) / (a - 1);
+};
+
+const getClampedPercentage = value => Math.min(Math.max(value, 0), 1);
+
 class Process extends React.Component {
   static propTypes = {
     showProgressBar: PropTypes.bool,
@@ -49,14 +56,7 @@ class Process extends React.Component {
     sectionC: document.querySelector('#section-c'),
   });
 
-  getExponentialPercentage = x => {
-    const a = 5;
-    return (a ** x - 1) / (a - 1);
-  };
-
-  getClampedPercentage = value => Math.min(Math.max(value, 0), 1);
-
-  handleScroll = () => {
+  getExponentialScrollPercentages = () => {
     const currentScroll = window.scrollY + (window.innerHeight - 88);
 
     const progressA =
@@ -69,17 +69,17 @@ class Process extends React.Component {
       (currentScroll - this.sections.sectionC.offsetTop) /
       this.sections.sectionC.offsetHeight;
 
-    const aExpo = this.getClampedPercentage(
-      this.getExponentialPercentage(progressA)
-    );
-    const bExpo = this.getClampedPercentage(
-      this.getExponentialPercentage(progressB)
-    );
-    const cExpo = this.getClampedPercentage(
-      this.getExponentialPercentage(progressC)
-    );
+    const expoA = getClampedPercentage(getExponentialPercentage(progressA));
+    const expoB = getClampedPercentage(getExponentialPercentage(progressB));
+    const expoC = getClampedPercentage(getExponentialPercentage(progressC));
 
-    const progresses = [
+    return [expoA, expoB, expoC];
+  };
+
+  handleScroll = () => {
+    const percentages = this.getExponentialScrollPercentages();
+
+    const progressElements = [
       document.querySelector('#progress-item-progress-a'),
       document.querySelector('#progress-item-progress-b'),
       document.querySelector('#progress-item-progress-c'),
@@ -91,14 +91,14 @@ class Process extends React.Component {
       document.querySelector('#progress-item-icon-c'),
     ];
 
-    const aActive = aExpo > 0 && !bExpo;
-    const bActive = bExpo > 0 && !cExpo;
-    const cActive = cExpo > 0 && !bActive;
+    const aActive = percentages[0] > 0 && !percentages[1];
+    const bActive = percentages[1] > 0 && !percentages[2];
+    const cActive = percentages[2] > 0 && !bActive;
 
     // iOS doesn't like me setting style directly 🤔
-    progresses[0].style.width = `${aExpo * 100}%`;
-    progresses[1].style.width = `${bExpo * 100}%`;
-    progresses[2].style.width = `${cExpo * 100}%`;
+    progressElements[0].style.width = `${percentages[0] * 100}%`;
+    progressElements[1].style.width = `${percentages[1] * 100}%`;
+    progressElements[2].style.width = `${percentages[2] * 100}%`;
 
     icons[0].classList.toggle(progressBarStyles.active, aActive);
     icons[1].classList.toggle(progressBarStyles.active, bActive);
