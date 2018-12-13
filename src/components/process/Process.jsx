@@ -41,13 +41,20 @@ class Process extends React.Component {
     mergeHeader: false,
   };
 
+  state = {
+    scrollCoverHeight: 0,
+  };
+
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('resize', this.handleResize);
     this.sections = this.getSections();
+    this.calculateScrollCoverHeight();
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('resize', this.handleResize);
   }
 
   getSections = () => ({
@@ -105,6 +112,23 @@ class Process extends React.Component {
     icons[2].classList.toggle(progressBarStyles.active, cActive);
   };
 
+  handleResize = () => {
+    this.calculateScrollCoverHeight();
+  };
+
+  calculateScrollCoverHeight = () => {
+    const pullTabHeight = 64;
+    const browserHeight = document.documentElement.clientHeight;
+
+    const shouldCompensate = window.matchMedia('(min-width: 768px)').matches;
+    const compensation = pullTabHeight + (shouldCompensate ? 56 : 0);
+
+    const scrollCoverHeight = browserHeight - compensation;
+    if (this.state.scrollCoverHeight !== scrollCoverHeight) {
+      this.setState({ scrollCoverHeight });
+    }
+  };
+
   handleBarItemClick = id => {
     const to = document.querySelector(id).offsetTop;
     const isDesktop = window.matchMedia('(min-width: 768px)').matches;
@@ -116,14 +140,7 @@ class Process extends React.Component {
   render() {
     const randomized = randomizeArray(subjectsData);
 
-    const pullTabHeight = 64;
-    const browserHeight = document.documentElement.clientHeight;
-
-    const shouldCompensate = window.matchMedia('(min-width: 768px)').matches;
-    const compensation = pullTabHeight + (shouldCompensate ? 56 : 0);
-
-    const scrollCoverHeight = browserHeight - compensation;
-
+    const { scrollCoverHeight } = this.state;
     const {
       showProgressBar,
       mergeHeader,
