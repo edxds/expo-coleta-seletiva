@@ -150,7 +150,7 @@ class Process extends React.Component {
           />
 
           <section className={styles.readingRow}>
-            <h2>Veja o vídeo!</h2>
+            <h2 className={styles.title}>Veja o vídeo!</h2>
             <p>
               Nesse vídeo, produzido pelo integrante do grupo Gabriel Fernandes,
               você vê de perto como funciona o sistema de Coleta Seletiva dentro
@@ -166,7 +166,7 @@ class Process extends React.Component {
 
           <section id="section-a">
             <div className={styles.readingRow}>
-              <h2>Geração</h2>
+              <h2 className={styles.title}>Geração</h2>
               <p>
                 Todos nós, ao longo de um dia, somos responsáveis pela produção
                 de grande quantidade de lixo. Poucos se dão conta do volume
@@ -214,7 +214,7 @@ class Process extends React.Component {
             <div className={styles.rowSeparator} />
 
             <div className={styles.readingRow}>
-              <h2>Depoimentos</h2>
+              <h2 className={styles.title}>Depoimentos</h2>
             </div>
 
             <div className={contentCardStyles.container}>
@@ -228,7 +228,7 @@ class Process extends React.Component {
 
           <section id="section-b">
             <div className={styles.readingRow}>
-              <h2>Separação</h2>
+              <h2 className={styles.title}>Separação</h2>
               <p>
                 O primeiro responsável pela separação do material é... VOCÊ!
                 Isso mesmo! A destinação correta do que é reciclável ou não é a
@@ -271,7 +271,7 @@ class Process extends React.Component {
           <div className={styles.rowSeparator} />
 
           <section id="section-c" className={styles.readingRow}>
-            <h2>Coleta</h2>
+            <h2 className={styles.title}>Coleta</h2>
             <p>
               Os resíduos recicláveis produzidos pela comunidade cefetiana são
               destinados a associações/cooperativas de catadores de materiais
