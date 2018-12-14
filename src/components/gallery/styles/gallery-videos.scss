@@ -1,63 +1,39 @@
 @import '../../variables';
 
-@media (min-width: $min-width-desktop) {
-  #gallery-videos {
-    .gallery-section-title-container {
-      margin-bottom: -16px;
-    }
-  }
-}
-
 .gallery-section-content.videos {
   flex-direction: column;
   overflow: hidden;
+
+  box-sizing: border-box;
+  padding: 16px;
 
   @media (min-width: $min-width-desktop) {
     flex-direction: row;
     flex-wrap: wrap;
 
-    padding-bottom: 16px;
-
-    box-sizing: border-box;
-  }
-}
-
-.gallery-video-item-size-container {
-  position: relative;
-
-  flex-basis: 100%;
-  padding-top: 56.25%; // 16:9 Aspect Ratio
-
-  // margin-bottom: -16px;
-  &:last-child {
-    margin-bottom: 0;
-  }
-
-  @media (min-width: $min-width-desktop) {
-    flex-basis: calc((100% / 3) - (32px / 3));
-    padding-top: calc(56.25% / 3); // 16:9 Aspect Ratio
+    padding: 0;
   }
 }
 
 .gallery-video-item-content-container {
-  position: absolute;
+  position: relative;
 
-  top: 0;
-  width: calc(100% - 32px);
-  height: calc(100% - 16px);
-
-  margin: 16px 16px 0 16px;
+  width: 100%;
+  margin: 16px 0 16px 0;
 
   background-color: $primary-color-darker;
 
   @media (min-width: $min-width-desktop) {
     transition: 0.2s;
-
-    width: calc(100% - 32px);
-    height: calc(100% - 32px);
-    margin: 32px 0 0 32px;
-
     box-shadow: 0 2px 8px rgba($color: black, $alpha: 0.2);
+
+    margin-left: 32px;
+
+    // formula:
+    // 100% / itens por coluna - (margem + (margem / itens por coluna))
+    // apli:
+    // (100% / 3) - (32px + (32px / 3))
+    width: calc(33.33% - 42.66px);
 
     &:hover {
       z-index: 1;
@@ -72,12 +48,8 @@
   position: absolute;
   display: flex;
 
-  top: 0;
-  width: calc(100%);
-  height: calc(100%);
-
-  // margin: 16px;
-  margin-bottom: 0px;
+  width: 100%;
+  height: 100%;
 
   border-radius: 8px;
   border: none;
@@ -127,9 +99,4 @@
   @media (max-width: $min-width-desktop) {
     padding-bottom: 54px;
   }
-}
-
-.video-margin-bottom {
-  width: 100%;
-  height: 16px;
 }
