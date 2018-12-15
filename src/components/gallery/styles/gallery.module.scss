@@ -7,12 +7,6 @@
   flex-direction: column;
 
   min-width: 100%;
-  // necessário pq o background-color
-  // é do .gallery, e não do body
-  min-height: 100vh;
-
-  background-color: $primary-color-darker;
-  color: white;
 
   section {
     display: flex;
