@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import styles from './styles/gallery-photos.module.scss';
+
 const GalleryPhotoItem = ({ url, index, onClick }) => {
   const onClickPhoto = () => onClick(index);
 
   return (
     <button
-      className="gallery-photo-item"
+      className={styles.item}
       style={{ backgroundImage: `url(${url})` }}
       onClick={onClickPhoto}
       type="button"

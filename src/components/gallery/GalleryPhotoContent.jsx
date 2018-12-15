@@ -2,16 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import GalleryPhotoItem from './GalleryPhotoItem';
-import './styles/gallery-photos.scss';
+import styles from './styles/gallery-photos.module.scss';
 
 const GalleryPhotoContent = ({ photos, onPhotoClick }) => {
   const isPhotosEmpty = !photos || photos.length === 0;
 
   return (
     <div
-      className={`gallery-section-content ${
-        isPhotosEmpty ? 'empty' : ''
-      } images`}
+      className={`${styles.photosSection} ${isPhotosEmpty ? styles.empty : ''}`}
     >
       {isPhotosEmpty && <p>Nenhuma foto disponível</p>}
       {!isPhotosEmpty &&
@@ -23,7 +21,6 @@ const GalleryPhotoContent = ({ photos, onPhotoClick }) => {
             onClick={onPhotoClick}
           />
         ))}
-      {!isPhotosEmpty && <div className="last-content" />}
     </div>
   );
 };

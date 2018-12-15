@@ -7,8 +7,9 @@ import Lightbox from 'react-images';
 
 import GalleryPhotoContent from './GalleryPhotoContent';
 import GalleryVideoContent, { videoShape } from './GalleryVideoContent';
+import GallerySection from './GallerySection';
 
-import './styles/gallery.scss';
+import styles from './styles/gallery.module.scss';
 
 const GalleryPresentational = ({
   photos,
@@ -27,7 +28,7 @@ const GalleryPresentational = ({
   }));
 
   return (
-    <div className="gallery">
+    <div className={styles.gallery}>
       {renderVideoOverlay()}
       <Lightbox
         images={photoUrls}
@@ -39,24 +40,16 @@ const GalleryPresentational = ({
         imageCountSeparator=" de "
         backdropClosesModal
       />
-      <h1 className="gallery-title">Galeria</h1>
-      <section id="gallery-photos">
-        <div className="gallery-section-title-container">
-          <p className="gallery-section-title">Fotos</p>
-        </div>
-
+      <h1 className={styles.title}>Galeria</h1>
+      <GallerySection id="gallery-photos" title="Fotos">
         <GalleryPhotoContent photos={photos} onPhotoClick={handlePhotoClick} />
-      </section>
-      <section id="gallery-videos">
-        <div className="gallery-section-title-container">
-          <p className="gallery-section-title">Vídeos</p>
-        </div>
-
+      </GallerySection>
+      <GallerySection id="gallery-videos" title="Vídeos">
         <GalleryVideoContent
           videos={videos}
           handleVideoClick={handleVideoClick}
         />
-      </section>
+      </GallerySection>
     </div>
   );
 };

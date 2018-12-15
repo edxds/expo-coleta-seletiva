@@ -1,21 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { ReactComponent as PlayIcon } from '../../assets/icons/play-icon.svg';
 import RatioContainer from '../structure/RatioContainer';
 
+import { ReactComponent as PlayIcon } from '../../assets/icons/play-icon.svg';
+import styles from './styles/gallery-videos.module.scss';
+
 const GalleryVideoItem = ({ url, onClick }) => (
-  <RatioContainer
-    ratio={9 / 16}
-    className="gallery-video-item-content-container"
-  >
+  <RatioContainer ratio={9 / 16} className={styles.contentContainer}>
     <button
-      className="gallery-video-item thumb"
+      className={`${styles.content} ${styles.thumb}`}
       style={{ backgroundImage: `url(${url})` }}
       type="button"
       onClick={onClick}
     />
-    <div className="gallery-video-item accessories">
+    <div className={`${styles.content} ${styles.accessories}`}>
       <PlayIcon />
     </div>
   </RatioContainer>

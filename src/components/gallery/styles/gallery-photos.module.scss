@@ -1,14 +1,13 @@
 @import '../../variables';
 
-@media (min-width: $min-width-desktop) {
-  #gallery-photos {
-    .gallery-section-title-container {
-      margin-bottom: -8px;
-    }
-  }
-}
+.photosSection {
+  display: flex;
 
-.gallery-section-content.images {
+  min-width: 100%;
+  max-width: 100%;
+
+  overflow: scroll;
+
   -webkit-overflow-scrolling: touch;
 
   -webkit-scroll-snap-type: mandatory;
@@ -26,6 +25,7 @@
     max-width: 100%;
     flex-wrap: wrap;
 
+    margin-top: -8px;
     padding: 0px 0px 16px 8px;
     box-sizing: border-box;
 
@@ -33,7 +33,16 @@
   }
 }
 
-.gallery-photo-item {
+.photosSection.empty {
+  justify-content: center;
+  align-content: center;
+
+  min-height: 200px;
+
+  color: rgba($color: white, $alpha: 0.5);
+}
+
+.item {
   width: 128px;
   height: 128px;
 
@@ -68,13 +77,4 @@
       cursor: pointer;
     }
   }
-}
-
-#gallery-photos {
-  padding-bottom: 16px;
-}
-
-.last-content {
-  flex: 0 0 16px;
-  height: 16px;
 }

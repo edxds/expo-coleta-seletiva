@@ -1,0 +1,28 @@
+@import '../../variables';
+
+.section {
+  margin-bottom: 32px;
+}
+
+.titleContainer {
+  display: flex;
+
+  height: 34px;
+  border-radius: 17px;
+
+  padding: 2px 32px;
+  margin-left: 16px;
+
+  background-color: $primary-color-dark;
+
+  @media (min-width: $min-width-desktop) {
+    margin-left: 32px;
+  }
+}
+
+.title {
+  margin: auto;
+
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

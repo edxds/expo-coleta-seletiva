@@ -2,16 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import GalleryVideoItem from './GalleryVideoItem';
-import './styles/gallery-videos.scss';
+import styles from './styles/gallery-videos.module.scss';
 
 const GalleryVideoContent = ({ videos, handleVideoClick }) => {
   const isVideosEmpty = !videos || videos.length === 0;
 
   return (
     <div
-      className={`gallery-section-content ${
-        isVideosEmpty ? 'empty' : ''
-      } videos`}
+      className={`${styles.videoSection} ${isVideosEmpty ? styles.empty : ''}`}
     >
       {isVideosEmpty && <p>Nenhum vídeo disponível</p>}
       {!isVideosEmpty &&
