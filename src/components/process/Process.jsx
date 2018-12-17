@@ -43,6 +43,7 @@ class Process extends React.Component {
 
   state = {
     scrollCoverHeight: 0,
+    tabTitle: 'Como Funciona',
   };
 
   componentDidMount() {
@@ -50,6 +51,7 @@ class Process extends React.Component {
     window.addEventListener('resize', this.handleResize);
     this.sections = this.getSections();
     this.calculateScrollCoverHeight();
+    this.updateTabTitle();
   }
 
   componentWillUnmount() {
@@ -114,18 +116,29 @@ class Process extends React.Component {
 
   handleResize = () => {
     this.calculateScrollCoverHeight();
+    this.updateTabTitle();
   };
 
   calculateScrollCoverHeight = () => {
     const pullTabHeight = 64;
+    const marginBottom = 24;
+
     const browserHeight = document.documentElement.clientHeight;
+    const scrollCoverHeight = browserHeight - (pullTabHeight + marginBottom);
 
-    const shouldCompensate = window.matchMedia('(min-width: 768px)').matches;
-    const compensation = pullTabHeight + (shouldCompensate ? 56 : 0);
-
-    const scrollCoverHeight = browserHeight - compensation;
     if (this.state.scrollCoverHeight !== scrollCoverHeight) {
       this.setState({ scrollCoverHeight });
+    }
+  };
+
+  updateTabTitle = () => {
+    const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+    const tabTitle = isDesktop
+      ? 'Como a Coleta Seletiva Funciona'
+      : 'Como Funciona';
+
+    if (this.state.tabTitle !== tabTitle) {
+      this.setState({ tabTitle });
     }
   };
 
@@ -140,7 +153,7 @@ class Process extends React.Component {
   render() {
     const randomized = randomizeArray(subjectsData);
 
-    const { scrollCoverHeight } = this.state;
+    const { scrollCoverHeight, tabTitle } = this.state;
     const {
       showProgressBar,
       mergeHeader,
@@ -155,17 +168,16 @@ class Process extends React.Component {
           handleClick={this.handleBarItemClick}
         />
         <div style={{ height: scrollCoverHeight }} />
+        <ProcessTab
+          title={tabTitle}
+          disappear={mergeHeader}
+          handleClick={handleGoToProcess}
+        />
         <article
           id="process"
           className={`${styles.content} ${!mergeHeader ? styles.hide : ''}`}
           {...passthrough}
         >
-          <ProcessTab
-            title="Como Funciona"
-            disappear={mergeHeader}
-            handleClick={handleGoToProcess}
-          />
-
           <section className={styles.readingRow}>
             <h2 className={styles.title}>Veja o vídeo!</h2>
             <p>
