@@ -14,14 +14,13 @@ const NavDrawerItem = ({ id, href, selected, onClick, children }) => {
   };
 
   return (
-    <li
-      className={`${styles.itemContainer} ${selected ? styles.selected : ''}`}
-      id={`drawer-item-${id}`}
+    <Link
+      to={href}
+      onClick={handleClick}
+      className={`${styles.item} ${selected ? styles.selected : ''}`}
     >
-      <Link to={href} onClick={handleClick} className={styles.item}>
-        {children}
-      </Link>
-    </li>
+      {children}
+    </Link>
   );
 };
 
@@ -80,35 +79,33 @@ class NavDrawer extends React.Component {
     return (
       <React.Fragment>
         <nav className={this.getVisibility(styles.drawer, visible)}>
-          <ul className={styles.itemsContainer}>
-            <NavDrawerItem
-              href="/"
-              id="home"
-              selected={selectedId === 'home'}
-              onClick={this.handleClick}
-            >
-              <HomeIcon />
-              <span className={styles.title}>Início</span>
-            </NavDrawerItem>
-            <NavDrawerItem
-              href="/processo"
-              id="process"
-              selected={selectedId === 'process'}
-              onClick={this.handleClick}
-            >
-              <RecyclingIcon style={{ marginTop: 4 }} />
-              <span className={styles.title}>O Processo</span>
-            </NavDrawerItem>
-            <NavDrawerItem
-              href="/galeria"
-              id="gallery"
-              selected={selectedId === 'gallery'}
-              onClick={this.handleClick}
-            >
-              <GalleryIcon />
-              <span className={styles.title}>Galeria</span>
-            </NavDrawerItem>
-          </ul>
+          <NavDrawerItem
+            href="/"
+            id="home"
+            selected={selectedId === 'home'}
+            onClick={this.handleClick}
+          >
+            <HomeIcon />
+            <span className={styles.title}>Início</span>
+          </NavDrawerItem>
+          <NavDrawerItem
+            href="/processo"
+            id="process"
+            selected={selectedId === 'process'}
+            onClick={this.handleClick}
+          >
+            <RecyclingIcon style={{ marginTop: 4 }} />
+            <span className={styles.title}>O Processo</span>
+          </NavDrawerItem>
+          <NavDrawerItem
+            href="/galeria"
+            id="gallery"
+            selected={selectedId === 'gallery'}
+            onClick={this.handleClick}
+          >
+            <GalleryIcon />
+            <span className={styles.title}>Galeria</span>
+          </NavDrawerItem>
         </nav>
         <div
           className={this.getVisibility(styles.backdrop, visible)}
