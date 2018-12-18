@@ -8,6 +8,7 @@ import ProportionalVideo from './ProportionalVideo';
 import ContentCard from '../content-card/ContentCard';
 import ProcessTab from './ProcessTab';
 import RibbonLink from './RibbonButton';
+import Carousel, { CarouselItem } from '../structure/Carousel';
 
 import Image01 from '../../assets/pictures/a_img01.jpg';
 import Image02 from '../../assets/pictures/a_img02.jpg';
@@ -19,7 +20,6 @@ import randomizeArray from '../../lib/random';
 import subjectsData from '../../assets/subjects-data';
 
 import styles from './styles/process.module.scss';
-import contentCardStyles from '../content-card/styles/content-card.module.scss';
 import progressBarStyles from './styles/progress-bar.module.scss';
 
 const getExponentialPercentage = x => {
@@ -45,6 +45,8 @@ class Process extends React.Component {
     scrollCoverHeight: 0,
     tabTitle: 'Como Funciona',
   };
+
+  randomized = randomizeArray(subjectsData);
 
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
@@ -151,8 +153,6 @@ class Process extends React.Component {
   };
 
   render() {
-    const randomized = randomizeArray(subjectsData);
-
     const { scrollCoverHeight, tabTitle } = this.state;
     const {
       showProgressBar,
@@ -246,11 +246,13 @@ class Process extends React.Component {
               <h2 className={styles.title}>Depoimentos</h2>
             </div>
 
-            <div className={contentCardStyles.container}>
-              {randomized.map(content => (
-                <ContentCard key={content.name} info={content} />
+            <Carousel>
+              {this.randomized.map(content => (
+                <CarouselItem>
+                  <ContentCard key={content.name} info={content} />
+                </CarouselItem>
               ))}
-            </div>
+            </Carousel>
           </section>
 
           <div className={styles.rowSeparator} />

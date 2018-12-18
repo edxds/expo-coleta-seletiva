@@ -26,7 +26,7 @@ export default class ProportionalHeader extends React.Component {
 
   setHeight = () => {
     const { height } = this.getDimensions(this.props.ratio);
-    this.elRef.current.style.flexBasis = `${height}px`;
+    this.elRef.current.style.height = `${height}px`;
   };
 
   render() {
