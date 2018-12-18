@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ProportionalHeader from './ProportionalHeader';
+import RatioContainer from '../structure/RatioContainer';
 import styles from './styles/content-card.module.scss';
 
 const ContentCard = ({ info }) => (
   <div className={styles.card}>
-    <ProportionalHeader
-      ratio={3 / 4}
-      image={info.image}
-      imageOptions={info.imageOptions}
-      className={styles.header}
-    />
+    <RatioContainer ratio={3 / 4}>
+      <div
+        className={styles.header}
+        style={{ backgroundImage: `url(${info.image})`, ...info.imageOptions }}
+      />
+    </RatioContainer>
     <div className={styles.content}>
       <div className={styles.titleContainer}>
         <span className={styles.title}>{info.name}</span>
