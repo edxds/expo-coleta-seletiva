@@ -22,9 +22,3 @@ body {
 #home {
   display: flex;
 }
-
-#app {
-  @media (min-width: $min-width-desktop) {
-    padding-left: 80px;
-  }
-}

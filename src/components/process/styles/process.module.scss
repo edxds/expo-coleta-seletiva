@@ -28,6 +28,8 @@
   padding-bottom: 88px;
 
   @media (min-width: $min-width-desktop) {
+    margin-left: 80px;
+
     // espaçamento para barra de progresso
     padding-bottom: 120px;
   }
