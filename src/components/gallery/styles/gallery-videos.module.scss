@@ -11,6 +11,7 @@
 
   box-sizing: border-box;
   padding: 16px;
+  padding-top: 0;
 
   @media (min-width: $min-width-desktop) {
     flex-direction: row;
@@ -26,7 +27,7 @@
 
   min-height: 200px;
 
-  color: rgba($color: white, $alpha: 0.5);
+  color: rgba($color: black, $alpha: 0.5);
 }
 
 .contentContainer {
@@ -35,7 +36,8 @@
   width: 100%;
   margin: 16px 0 16px 0;
 
-  background-color: $primary-color-darker;
+  background-color: rgba($color: black, $alpha: 0.2);
+  border-radius: 8px;
 
   @media (min-width: $min-width-desktop) {
     transition: 0.2s;
@@ -69,7 +71,7 @@
   border: none;
 
   svg {
-    fill: white;
+    fill: rgba($color: black, $alpha: 0.5);
 
     width: 45px;
     height: 60px;

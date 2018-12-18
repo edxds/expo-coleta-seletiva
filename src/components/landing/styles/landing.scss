@@ -1,3 +1,5 @@
+@import '../../variables';
+
 #landing {
   position: fixed;
 
@@ -11,4 +13,9 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
+
+  @media (min-width: $min-width-desktop) {
+    align-items: center;
+    justify-content: center;
+  }
 }

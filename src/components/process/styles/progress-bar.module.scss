@@ -1,6 +1,8 @@
 @import '../../variables';
 
 .container {
+  pointer-events: auto;
+
   transition: bottom 0.5s;
   z-index: 9;
 
@@ -78,6 +80,10 @@
   svg {
     fill: white;
   }
+}
+
+.itemIcon:hover {
+  cursor: pointer;
 }
 
 // fundo da barra de progresso abaixo do ícone

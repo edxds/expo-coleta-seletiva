@@ -8,6 +8,7 @@ import ProportionalVideo from './ProportionalVideo';
 import ContentCard from '../content-card/ContentCard';
 import ProcessTab from './ProcessTab';
 import RibbonLink from './RibbonButton';
+import Carousel, { CarouselItem } from '../structure/Carousel';
 
 import Image01 from '../../assets/pictures/a_img01.jpg';
 import Image02 from '../../assets/pictures/a_img02.jpg';
@@ -19,7 +20,6 @@ import randomizeArray from '../../lib/random';
 import subjectsData from '../../assets/subjects-data';
 
 import styles from './styles/process.module.scss';
-import contentCardStyles from '../content-card/styles/content-card.module.scss';
 import progressBarStyles from './styles/progress-bar.module.scss';
 
 const getExponentialPercentage = x => {
@@ -43,13 +43,17 @@ class Process extends React.Component {
 
   state = {
     scrollCoverHeight: 0,
+    tabTitle: 'Como Funciona',
   };
+
+  randomized = randomizeArray(subjectsData);
 
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
     window.addEventListener('resize', this.handleResize);
     this.sections = this.getSections();
     this.calculateScrollCoverHeight();
+    this.updateTabTitle();
   }
 
   componentWillUnmount() {
@@ -114,18 +118,29 @@ class Process extends React.Component {
 
   handleResize = () => {
     this.calculateScrollCoverHeight();
+    this.updateTabTitle();
   };
 
   calculateScrollCoverHeight = () => {
     const pullTabHeight = 64;
+    const marginBottom = 24;
+
     const browserHeight = document.documentElement.clientHeight;
+    const scrollCoverHeight = browserHeight - (pullTabHeight + marginBottom);
 
-    const shouldCompensate = window.matchMedia('(min-width: 768px)').matches;
-    const compensation = pullTabHeight + (shouldCompensate ? 56 : 0);
-
-    const scrollCoverHeight = browserHeight - compensation;
     if (this.state.scrollCoverHeight !== scrollCoverHeight) {
       this.setState({ scrollCoverHeight });
+    }
+  };
+
+  updateTabTitle = () => {
+    const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+    const tabTitle = isDesktop
+      ? 'Como a Coleta Seletiva Funciona'
+      : 'Como Funciona';
+
+    if (this.state.tabTitle !== tabTitle) {
+      this.setState({ tabTitle });
     }
   };
 
@@ -138,9 +153,7 @@ class Process extends React.Component {
   };
 
   render() {
-    const randomized = randomizeArray(subjectsData);
-
-    const { scrollCoverHeight } = this.state;
+    const { scrollCoverHeight, tabTitle } = this.state;
     const {
       showProgressBar,
       mergeHeader,
@@ -155,17 +168,16 @@ class Process extends React.Component {
           handleClick={this.handleBarItemClick}
         />
         <div style={{ height: scrollCoverHeight }} />
+        <ProcessTab
+          title={tabTitle}
+          disappear={mergeHeader}
+          handleClick={handleGoToProcess}
+        />
         <article
           id="process"
           className={`${styles.content} ${!mergeHeader ? styles.hide : ''}`}
           {...passthrough}
         >
-          <ProcessTab
-            title="Como Funciona"
-            disappear={mergeHeader}
-            handleClick={handleGoToProcess}
-          />
-
           <section className={styles.readingRow}>
             <h2 className={styles.title}>Veja o vídeo!</h2>
             <p>
@@ -234,11 +246,13 @@ class Process extends React.Component {
               <h2 className={styles.title}>Depoimentos</h2>
             </div>
 
-            <div className={contentCardStyles.container}>
-              {randomized.map(content => (
-                <ContentCard key={content.name} info={content} />
+            <Carousel>
+              {this.randomized.map(content => (
+                <CarouselItem>
+                  <ContentCard key={content.name} info={content} />
+                </CarouselItem>
               ))}
-            </div>
+            </Carousel>
           </section>
 
           <div className={styles.rowSeparator} />

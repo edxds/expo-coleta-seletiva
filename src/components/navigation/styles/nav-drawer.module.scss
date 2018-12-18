@@ -12,6 +12,10 @@
 
   background-color: white;
   pointer-events: all;
+
+  box-sizing: border-box;
+  padding: 22px;
+  margin: 0;
 }
 
 .drawer.visible {
@@ -37,44 +41,29 @@
   pointer-events: auto;
 }
 
-.itemsContainer {
-  list-style: none;
-
-  padding: 22px;
-  margin: 0;
-}
-
-// container de item do drawer
-.itemContainer {
+.item {
   transition: 0.2s;
 
   display: flex;
   align-items: center;
 
-  border-radius: 8px;
+  max-width: 228px;
+  border-radius: 24px;
+  padding: 14px 18px;
 
-  color: rgba($color: #000000, $alpha: 0.5);
   font-size: 14px;
-  font-weight: 500;
-}
-
-.item {
-  display: flex;
-  align-items: center;
-  flex: 1;
-
-  padding: 14px;
-  border-radius: 8px;
-
-  color: inherit;
+  font-weight: 700;
   text-decoration: none;
+  color: rgba($color: #000000, $alpha: 0.5);
+
+  margin-bottom: 8px;
 
   svg {
     fill: rgba($color: #000000, $alpha: 0.5);
   }
 }
 
-.itemContainer.selected {
+.item.selected {
   color: $primary-color;
   background-color: rgba($color: $primary-color, $alpha: 0.2);
 

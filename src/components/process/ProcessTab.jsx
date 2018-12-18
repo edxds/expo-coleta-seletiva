@@ -14,15 +14,15 @@ const ProcessTab = ({ title, disappear, handleClick }) => {
     : `M0 ${svgHeight / 2} L${svgMiddle} ${svgHeight /
         2} L${svgWidth} ${svgHeight / 2}`;
 
-  const buttonClass = `${styles.container} ${disappear ? styles.merge : ''}`;
+  const buttonClass = `${styles.container} ${disappear ? styles.hide : ''}`;
   const buttonOnClick = !disappear ? handleClick : null;
 
   return (
     <button className={buttonClass} onClick={buttonOnClick} type="button">
+      <p className={styles.title}>{title}</p>
       <svg className={styles.chevron} width={20} height={5} viewBox="0 0 20 5">
         <path d={svgPath} />
       </svg>
-      <p className={styles.title}>{title}</p>
     </button>
   );
 };

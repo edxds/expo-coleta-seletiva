@@ -1,0 +1,139 @@
+@import '../../variables';
+
+.container {
+  position: relative;
+  display: flex;
+
+  overflow: hidden;
+
+  padding: 8px;
+
+  @media (min-width: $min-width-desktop) {
+    padding: 16px;
+  }
+}
+
+.carousel {
+  transition: 0.5s;
+
+  display: flex;
+
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  @media (min-width: $min-width-desktop) {
+    overflow: visible;
+  }
+}
+
+.carouselItem {
+  flex: 0 0 100%;
+
+  box-sizing: border-box;
+  padding: 8px;
+
+  @media (min-width: $min-width-desktop) {
+    flex: 0 0 50%;
+  }
+}
+
+.pagingBtn {
+  transition: 0.2s;
+
+  display: flex;
+  padding: 0;
+
+  // remover styling de botão
+  -webkit-appearance: none;
+  border: none;
+
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+
+  background-color: rgba($color: #000000, $alpha: 0.25);
+
+  outline: none;
+
+  svg {
+    margin: auto;
+  }
+
+  @media (min-width: $min-width-desktop) {
+    top: 50%;
+
+    background-color: white;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.25);
+
+    svg {
+      path {
+        fill: $primary-color;
+      }
+    }
+  }
+}
+
+.pagingBtn:hover {
+  @media (min-width: $min-width-desktop) {
+    transform: scale(1.08);
+    box-shadow: 0px 12px 18px rgba(0, 0, 0, 0.25);
+
+    cursor: pointer;
+  }
+}
+
+.pagingBtn:active {
+  @media (min-width: $min-width-desktop) {
+    background-color: hsl(0, 0, 90);
+
+    transform: scale(0.98);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.pagingBtn.disabled {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px) scale(0.9);
+}
+
+.pagingBtn.right {
+  right: 8px;
+
+  svg {
+    margin: auto;
+    margin-left: 40%;
+  }
+
+  @media (min-width: $min-width-desktop) {
+    right: 16px;
+  }
+
+  @media (min-width: 1400px) {
+    right: 15%;
+  }
+}
+
+.pagingBtn.left {
+  left: 8px;
+
+  svg {
+    transform: scaleX(-1);
+
+    margin: auto;
+    margin-right: 40%;
+  }
+
+  @media (min-width: $min-width-desktop) {
+    left: 16px;
+  }
+
+  @media (min-width: 1400px) {
+    left: 15%;
+  }
+}

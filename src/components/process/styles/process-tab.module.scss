@@ -4,70 +4,56 @@
   transition: 0.5s;
 
   display: flex;
-  flex-direction: column;
-
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  align-self: center;
 
-  // dimensões em mobile
   height: 64px;
-  width: 100%;
+  max-width: calc(100% - 24px);
+  border-radius: 32px;
 
-  padding: 16px;
+  margin: 0 auto;
+  margin-bottom: 24px;
+
+  padding: 0 40px;
   box-sizing: border-box;
+
+  pointer-events: auto;
 
   // remover styling de botão
   -webkit-appearance: none;
   border: none;
-  border-radius: 8px 8px 0 0;
 
-  background-color: $primary-color;
+  background: linear-gradient(96.46deg, #107df0 0%, #5810f0 100%);
   color: white;
 
   font-family: $font-family;
-  font-weight: 500;
-  font-size: 18px;
+  font-size: 22px;
+  font-weight: 900;
 
   text-transform: uppercase;
   letter-spacing: 0.05em;
 
   @media (min-width: $min-width-desktop) {
-    height: 120px;
-    width: $min-width-desktop;
-
-    margin: 0 auto;
-    padding: 32px 0;
-
-    border-radius: 12px;
+    width: unset;
   }
 }
 
-// quando a tab se 'mescla' com a página do processo
-.container.merge {
-  height: 72px;
+.container:hover {
+  cursor: pointer;
+}
 
-  background-color: white;
-  color: rgba($color: #000000, $alpha: 0.8);
-
-  .chevron {
-    margin-top: 8px;
-    stroke: rgba($color: #000000, $alpha: 0.4);
-  }
+.container.hide {
+  opacity: 0;
 
   // remove a borda que aparece quando o botão está selecionado
   &:focus {
     outline: none;
   }
-
-  // esconder no desktop
-  @media (min-width: $min-width-desktop) {
-    opacity: 0;
-  }
 }
 
 .chevron {
-  margin: auto;
-  margin-top: 0;
+  margin: auto 0;
 
   stroke: white;
   fill: none;
@@ -81,14 +67,17 @@
     // só funciona no chrome kk...
     transition: d 0.5s;
   }
+
+  @media (max-width: 366px) {
+    stroke-width: 3px;
+  }
 }
 
 .title {
   margin: 0;
-  margin-top: 8px;
+  margin-right: 32px;
 
-  @media (min-width: $min-width-desktop) {
-    font-size: 2rem;
-    font-weight: 700;
+  @media (max-width: 366px) {
+    font-size: 16px;
   }
 }

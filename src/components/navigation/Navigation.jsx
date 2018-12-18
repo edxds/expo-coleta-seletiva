@@ -5,7 +5,7 @@ import { connectToTheme } from '../context';
 
 import DrawerButton from './DrawerButton';
 import NavDrawer from './NavDrawer';
-import NavTabs from './NavTabs';
+import NavSidebar from './NavSidebar';
 
 // import './styles/navigation.scss';
 import styles from './styles/navigation.module.scss';
@@ -31,6 +31,9 @@ class Navigation extends React.Component {
     document.addEventListener('touchmove', this.handleTouchMove);
     document.addEventListener('scroll', this.handleScroll);
     window.addEventListener('resize', this.handleResize);
+
+    // decidir se mostra nav mobile ou desktop
+    this.handleResize();
   }
 
   componentWillUnmount() {
@@ -91,7 +94,7 @@ class Navigation extends React.Component {
     return (
       <div className={styles.container}>
         {isDesktop ? (
-          <NavTabs theme={currentTheme} />
+          <NavSidebar />
         ) : (
           <React.Fragment>
             <DrawerButton

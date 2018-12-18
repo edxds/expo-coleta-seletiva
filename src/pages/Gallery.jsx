@@ -25,9 +25,7 @@ class Gallery extends React.Component {
   ];
 
   componentDidMount() {
-    const { changeTheme } = this.props;
-    changeTheme('dark');
-
+    this.props.changeTheme('elevated');
     window.addEventListener('resize', this.handleWindowResize);
   }
 
