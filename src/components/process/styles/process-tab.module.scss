@@ -18,6 +18,8 @@
   padding: 0 40px;
   box-sizing: border-box;
 
+  pointer-events: auto;
+
   // remover styling de botão
   -webkit-appearance: none;
   border: none;
@@ -35,6 +37,10 @@
   @media (min-width: $min-width-desktop) {
     width: unset;
   }
+}
+
+.container:hover {
+  cursor: pointer;
 }
 
 .container.hide {
