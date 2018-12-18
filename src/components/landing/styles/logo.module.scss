@@ -11,7 +11,7 @@
 
   @media (min-width: $min-width-desktop) {
     flex-direction: row;
-    margin-top: 120px;
+    margin-bottom: 200px;
   }
 }
 
@@ -30,8 +30,8 @@
   height: 88px;
 
   @media (min-width: $min-width-desktop) {
-    width: 200px;
-    height: 200px;
+    width: 222px;
+    height: 222px;
 
     // balanço optico
     margin-top: 8px;
@@ -78,7 +78,7 @@
     margin: 0;
     font-size: 3.5rem;
 
-    max-width: 378px;
+    max-width: 400px;
   }
 }
 
