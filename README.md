@@ -29,4 +29,4 @@ Crie uma pasta para o projeto e clone o repositório usando o comando `git clone
 - Alexsander Soares ([@AlexSTx](https://github.com/AlexSTx)), Informática, CEFET/RJ Maracanã - Desenvolvimento, produção de imagem;
 - Eduardo Souza ([@edxds](https://github.com/edxds)), Informática, CEFET/RJ Maracanã — Desenvolvimento, produção de imagem;
 - Gabriel Fernandes, Telecomunicações, CEFET/RJ Maracanã — Produção de vídeo;
-- Gabriel Leonardo, Informática, CEFET/RJ Maracanã — Produção de imagem;
+- Gabriel Leonardo, Informática, CEFET/RJ Maracanã — Produção de imagem.
